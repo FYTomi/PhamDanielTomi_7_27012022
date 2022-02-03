@@ -1,5 +1,6 @@
 const express = require('express');
 require('dotenv').config({path:'./config/.env'})
+//require('./config/sql');
 const app = express();
 
 

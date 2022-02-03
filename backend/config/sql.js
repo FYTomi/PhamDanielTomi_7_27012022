@@ -1,11 +1,12 @@
+require('dotenv').config({path:'.env'})
 //Connection à la BDD MySQL
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
 // create the connection to database
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'ApQOlala49s3@',
+  password: `${process.env.MDPBDD}`,
   database: 'groupomania'
 });
 
