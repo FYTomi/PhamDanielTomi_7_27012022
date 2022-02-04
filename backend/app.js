@@ -17,7 +17,7 @@ const db = require('./models')
 
 //Importation des routes
 const userRoutes = require('./routes/user_routes');
-//app.use(("auth", userRoutes))
+//app.use(("/auth", userRoutes))
 
 //Crée les tables si elles n'existent pas
 db.sequelize.sync().then((req) => {
