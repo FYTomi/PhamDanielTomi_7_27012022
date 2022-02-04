@@ -5,9 +5,14 @@ module.exports = (sequelize, DataTypes)=>{
             type: DataTypes.STRING,
             allowNull: false,
         },
-        passwords:{
+        password:{
             type: DataTypes.STRING,
             allowNull: false,
+        },
+        email:{
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
         }
     });
     return Users;
