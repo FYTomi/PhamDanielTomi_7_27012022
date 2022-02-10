@@ -13,6 +13,9 @@ module.exports = (sequelize, DataTypes)=>{
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
+            validate:{
+                isEmail: {msg:"L'email doit être valide"},
+            }
         }
     });
     return Users;
