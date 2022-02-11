@@ -4,7 +4,7 @@ const { sign } = require('jsonwebtoken')
 const { Users } = require('../models')
 
 //Middleware pour l'enregistrement de nouveau utilisateur
-exports.signup = async (req, res) => {
+exports.signup = (req, res) => {
   const { username, password, email } = req.body;
 bcrypt
     .hash(password, 10)
@@ -20,11 +20,11 @@ bcrypt
 };
 
 //Middleware pour login à un compte existant
-exports.login = async (req, res) => {
+exports.login = (req, res) => {
   const { username, password } = req.body;
 
   // Cherche user dans la BDD, en lui passant le body de la requête
-  const user = await Users.findOne({ where: { username: username } });
+  const user = Users.findOne({ where: { username: username } });
 
   if (!user) {
     res.status(401).json({ error: "Utilisateur non trouvé" });
