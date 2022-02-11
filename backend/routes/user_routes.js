@@ -17,9 +17,9 @@ const userCtrl = require("../controllers/users_controllers");
 //DELETE - Supprimer un compte
 router.post ("/signup", userCtrl.signup);
 router.post ("/login", userCtrl.login);
-router.get ("/accountInfo", userCtrl.accountInfo);
+router.get ("/accountInfo",auth, userCtrl.accountInfo);
 router.get ("/authentificate", userCtrl.authentification);
-router.put ("/changePassword", userCtrl.changePassword);
-router.delete ("/deleteAccount", userCtrl.deelteAccount);
+router.put ("/changePassword",auth, userCtrl.changePassword);
+router.delete ("/deleteAccount",auth, userCtrl.deelteAccount);
 
 module.exports = router;
