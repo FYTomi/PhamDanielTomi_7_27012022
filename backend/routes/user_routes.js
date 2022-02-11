@@ -1,6 +1,10 @@
 //Importation
 const express = require("express");
 const router = express.Router();
+
+//Importation middleware token authentificateur
+const auth = require("../middlewares/authentification");
+
 //Controleur pour associer les fonction aux différentes routes
 const userCtrl = require("../controllers/users_controllers");
 
@@ -14,8 +18,8 @@ const userCtrl = require("../controllers/users_controllers");
 router.post ("/signup", userCtrl.signup);
 router.post ("/login", userCtrl.login);
 router.get ("/accountInfo", userCtrl.accountInfo);
-router.get ("/login", userCtrl.authentification);
-router.put ("/signup", userCtrl.changePassword);
-router.delete ("/login", userCtrl.deelteAccount);
+router.get ("/authentificate", userCtrl.authentification);
+router.put ("/changePassword", userCtrl.changePassword);
+router.delete ("/deleteAccount", userCtrl.deelteAccount);
 
 module.exports = router;
