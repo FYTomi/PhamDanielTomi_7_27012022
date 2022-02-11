@@ -1,12 +1,11 @@
 //Importation
 const bcrypt = require("bcrypt");
 const { sign } = require('jsonwebtoken')
-const Users = require("../models/Users");
+const { Users } = require('../models')
 
 //Middleware pour l'enregistrement de nouveau utilisateur
-exports.signup = (req, res) => {
+exports.signup = async (req, res) => {
   const { username, password, email } = req.body;
-  // Crypte le mot de passe
 bcrypt
     .hash(password, 10)
     .then((hash) => {
@@ -21,7 +20,7 @@ bcrypt
 };
 
 //Middleware pour login à un compte existant
-exports.login = (req, res) => {
+exports.login = async (req, res) => {
   const { username, password } = req.body;
 
   // Cherche user dans la BDD, en lui passant le body de la requête
@@ -33,10 +32,10 @@ exports.login = (req, res) => {
     // Vérifie avec bcrypt le mot de passe du body
     bcrypt
       .compare(password, user.password)
-      .then(async (match) => {
-      try {
-        if (!match) res.json({ error: "Mauvaise combination" });
-
+      .then((valid) => {
+        if (!valid){
+            return res.stauts(401).json({ error: "Mot de passe incorrect" });
+        }
         // Crée le token avec sign de jsonwebtoken
         const accessToken = sign(
           { username: user.username, 
@@ -47,9 +46,6 @@ exports.login = (req, res) => {
         res.json({  token: accessToken, 
                     username: username, 
                     id: user.id });
-      } catch (error) {
-        console.log(error);
-      }
     });
   }
 };

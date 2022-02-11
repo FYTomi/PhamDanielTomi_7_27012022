@@ -21,9 +21,9 @@ app.use(cors());
 //Importation des models
 const db = require("./models");
 
-//Importation des routes
-const userRoutes = require("./routes/user_routes");
-//app.use(("/auth", userRoutes))
+//Enregistrement des routes API
+app.use("/api/auth", usersRoutes);
+
 
 //Crée les tables issue de l'importation des models si elles n'existent pas
 db.sequelize.sync().then((req) => {
