@@ -1,7 +1,13 @@
-const express = require('express');
-require('dotenv').config({path:'./config/.env'})
-const cors = require ('cors');
+const express = require("express");
+require("dotenv").config({ path: "./config/.env" });
+const cors = require("cors");
 //require('./config/sql');
+
+//Importation routes
+const usersRoutes = require("./routes/user_routes");
+const postsRoutes = require("./routes/posts_routes");
+const likeRoutes = require("./routes/likes_routes");
+const commentsRoutes = require("./routes/likes_routes");
 
 const app = express();
 
@@ -13,18 +19,16 @@ app.use(express.json());
 app.use(cors());
 
 //Importation des models
-const db = require('./models')
+const db = require("./models");
 
 //Importation des routes
-const userRoutes = require('./routes/user_routes');
+const userRoutes = require("./routes/user_routes");
 //app.use(("/auth", userRoutes))
 
-//Crée les tables si elles n'existent pas
+//Crée les tables issue de l'importation des models si elles n'existent pas
 db.sequelize.sync().then((req) => {
-    //Serveur
-app.listen(process.env.PORT, ()=>{
-    console.log(`Listening on port ${process.env.PORT}`)
-    });
+  //Serveur
+  app.listen(process.env.PORT, () => {
+    console.log(`Listening on port ${process.env.PORT}`);
+  });
 });
-
-
