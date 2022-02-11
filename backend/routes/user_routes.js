@@ -5,7 +5,7 @@ const router = express.Router();
 //Importation middleware token authentificateur
 const auth = require("../middlewares/authentification");
 
-//Controleur pour associer les fonction aux différentes routes
+//Controleur pour associer les fonctions aux différentes routes
 const userCtrl = require("../controllers/users_controllers");
 
 
@@ -15,6 +15,7 @@ const userCtrl = require("../controllers/users_controllers");
 //GET - Vérification authentification
 //PUT - Changement d'un mot de passe
 //DELETE - Supprimer un compte
+
 router.post ("/signup", userCtrl.signup);
 router.post ("/login", userCtrl.login);
 //router.get ("/accountInfo",auth, userCtrl.accountInfo);
