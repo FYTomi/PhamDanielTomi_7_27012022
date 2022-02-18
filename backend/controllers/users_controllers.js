@@ -59,4 +59,28 @@ exports.accountInfo = (req, res) => {
     attribute: { exclude: ['password']},
   })
   res.json(this.accountInfo)
+};
+
+//Modification d'un mot de passe
+
+exports.changePassword = async(req, res) => {
+  const { oldPassword, newPassword} = req.body
+
+  const user = await Users.findOne({ where : { username: req.user.username}})
+
+  bcrypt.compare(oldPassword, user.password).then((match) =>{
+    if (!match) {
+      res.status(406).json({ error: 'Mot de passe incorrect'})
+    } else {
+      bcrypt
+        .hash(newPassword, 10)
+        .then ((hash) =>{
+          Users.update(
+            {password: hash},
+            {where: {username: req.user.username} }
+          )
+          res.status(200).json('Le mot de passe a bien été changé')
+        })
+    }
+  })
 }
