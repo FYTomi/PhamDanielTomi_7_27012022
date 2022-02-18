@@ -23,7 +23,7 @@ const db = require("./models");
 
 //Enregistrement des routes API
 app.use("/api/auth", usersRoutes);
-
+app.use("/posts", postsRoutes);
 
 //Crée les tables issue de l'importation des models si elles n'existent pas
 db.sequelize.sync().then((req) => {
