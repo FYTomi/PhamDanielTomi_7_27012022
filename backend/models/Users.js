@@ -16,6 +16,11 @@ module.exports = (sequelize, DataTypes)=>{
             validate:{
                 isEmail: {msg:"L'email doit être valide"},
             }
+        },
+        adminStatus:{
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false,
         }
     });
 
