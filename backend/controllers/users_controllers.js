@@ -20,11 +20,11 @@ bcrypt
 };
 
 //Middleware pour login à un compte existant
-exports.login = (req, res) => {
+exports.login = async(req, res) => {
   const { username, password } = req.body;
 
   // Cherche user dans la BDD, en lui passant le body de la requête
-  const user = Users.findOne({ where: { username: username } });
+  const user = await Users.findOne({ where: { username: username } });
 
   if (!user) {
     res.status(401).json({ error: "Utilisateur non trouvé" });
@@ -52,10 +52,10 @@ exports.login = (req, res) => {
 
 //Récupération des infos d'un compte
 
-exports.accountInfo = (req, res) => {
+exports.accountInfo = async(req, res) => {
   const id = req.params.id
 
-  const userInfo = Users.findByPk(id, {
+  const userInfo = await Users.findByPk(id, {
     attribute: { exclude: ['password']},
   })
   res.json(this.accountInfo)
@@ -77,10 +77,22 @@ exports.changePassword = async(req, res) => {
         .then ((hash) =>{
           Users.update(
             {password: hash},
-            {where: {username: req.user.username} }
-          )
+            {where: {username: req.user.username} })
+
           res.status(200).json('Le mot de passe a bien été changé')
-        })
-    }
-  })
-}
+        });
+    };
+  });
+};
+
+//Suppression d'un utilisateur
+
+exports.deleteAccount = async (req, res) => {
+  const userId = req.params.id
+  await Users.destroy ({
+    where: {
+      id:userId,
+    },
+  }),
+  res.status(200).json("Le compte a été supprimé")
+};
