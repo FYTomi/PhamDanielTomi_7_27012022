@@ -34,7 +34,7 @@ exports.login = (req, res) => {
       .compare(password, user.password)
       .then((valid) => {
         if (!valid){
-            return res.stauts(401).json({ error: "Mot de passe incorrect" });
+            return res.status(401).json({ error: "Mot de passe incorrect" });
         }
         // Crée le token avec sign de jsonwebtoken
         const accessToken = sign(
