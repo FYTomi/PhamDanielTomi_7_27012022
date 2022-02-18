@@ -13,14 +13,14 @@ const userCtrl = require("../controllers/users_controllers");
 //POST - Connection d'un utilisateur
 //GET -  Récup info d'un utilisateur
 //GET - Vérification authentification
-//PUT - Changement d'un mot de passe
+//PUT - Changement d'un mot de passe, image de profil, username
 //DELETE - Supprimer un compte
 
 router.post ("/signup", userCtrl.signup);
 router.post ("/login", userCtrl.login);
-//router.get ("/accountInfo",auth, userCtrl.accountInfo);
+router.get ("/accountInfo/:id",auth, userCtrl.accountInfo);
 //router.get ("/authentificate", userCtrl.authentification);
 //router.put ("/changePassword",auth, userCtrl.changePassword);
-//router.delete ("/deleteAccount/:id",auth, userCtrl.deelteAccount);
+//router.delete ("/deleteAccount/:id",auth, userCtrl.deleteAccount);
 
 module.exports = router;

@@ -49,3 +49,14 @@ exports.login = (req, res) => {
     });
   }
 };
+
+//Récupération des infos d'un compte
+
+exports.accountInfo = (req, res) => {
+  const id = req.params.id
+
+  const userInfo = Users.findByPk(id, {
+    attribute: { exclude: ['password']},
+  })
+  res.json(this.accountInfo)
+}
