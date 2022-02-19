@@ -17,6 +17,6 @@ db.connect(function(err) {
     console.log("Connected!");
     db.query("CREATE DATABASE groupomania", function (err, result) {
       if (err) throw err;
-      console.log("Base de donnée ajouté");
+      console.log("Base de données ajouté");
     });
   });

@@ -1,24 +1,20 @@
-//Importation jwt
-const jsonWebToken = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 module.exports = (req, res, next) => {
-  const accessToken = req.header("accessToken");
-
-  // Vérifie si accessToken existe, si quelqu'un est connecté
-  if (!accessToken)
-    return res.json({ error: "L'utilisateur n'est pas connecté !" });
-
-  // Utilise verify de jsonwebtoken pour voir si le token est valide
   try {
-    const validToken = jsonWebToken.verify(accessToken, "RANDOM_TOKEN_SECRET"); 
-    req.user = validToken; // Crée une variable user avec les informations de validToken (username + id)
+    //on récupère le token en tant que deuxième élément dans le header authorization
+    const token = req.headers.authorization.split(' ')[1];
+    const decodedToken = jwt.verify(token, process.env.USER_TOKEN);
+    
+    //on récupère le userId de l'object decodedToken et on le vérifie dans le if
+    const userId = decodedToken.userId;
 
-    // Si validToken est true, autorise la poursuite de la requête
-    if (validToken) {
-      return next();
+    if (req.body.userId && req.body.userId !== userId) {
+      res.status(403).json({ error: 'Utilisateur non autorisé' });
+    } else {
+      next();
     }
-  } catch (error) {
-    res.status(401).json({ error: error | "Requête non authentifiée !" });
+  } catch {
+    res.status(403).json({ error: 'Utilisateur non autorisé' });
   }
 };
-
