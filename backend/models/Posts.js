@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    imageUrl:{
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   });
 
   //Relation entre un post et les différents commentaires et likes qu'il peut avoir

@@ -1,6 +1,7 @@
 //Importation
 const express = require("express");
 const router = express.Router();
+const multer = require('../middlewares/multer')
 
 //Importation middleware token authentificateur
 const auth = require("../middlewares/authentification");
@@ -18,8 +19,8 @@ const postsCtrl = require("../controllers/posts_controllers");
 
 router.get ("/posts",auth, postsCtrl.displayPosts);
 router.get ("/post/:id",auth, postsCtrl.displayPost);
-router.get ("/userPosts/:id",auth, postsCtrl.displayUserPosts);
-router.post ("/",auth, postsCtrl.createPost);
+router.get ("/userPosts/:id", postsCtrl.displayUserPosts);
+router.post ("/post",auth,multer, postsCtrl.createPost);
 router.put ("/changeTitle",auth, postsCtrl.changePostTitle);
 router.put ("/changeText",auth, postsCtrl.changePostText);
 router.delete ("/:postId",auth, postsCtrl.deletePost);
