@@ -4,8 +4,13 @@ const { sign } = require('jsonwebtoken')
 const { Users } = require('../models')
 
 //Middleware pour l'enregistrement de nouveau utilisateur
-exports.signup = (req, res) => {
+exports.signup = async(req, res) => {
   const { username, password, email } = req.body;
+  const user = await Users.findOne({where: {username: username}})
+
+  if (user) {
+    res.json({error: "L'utilisateur existe déjà"})
+  } else {
 bcrypt
     .hash(password, 10)
     .then((hash) => {
@@ -17,7 +22,7 @@ bcrypt
     });
     res.status(201).json({ message: "Utilisateur créé" });
   });
-};
+}};
 
 //Middleware pour login à un compte existant
 exports.login = async(req, res) => {
