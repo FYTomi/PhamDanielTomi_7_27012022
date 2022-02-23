@@ -40,7 +40,7 @@ exports.login = async(req, res) => {
       .then((valid) => {
         if (!valid){
             return res.status(401).json({ error: "Mot de passe incorrect" });
-        }
+        } 
         // Crée le token avec sign de jsonwebtoken
         const accessToken = sign(
           { username: user.username, 
@@ -54,6 +54,7 @@ exports.login = async(req, res) => {
     });
   }
 };
+
 
 //Récupération des infos d'un compte
 

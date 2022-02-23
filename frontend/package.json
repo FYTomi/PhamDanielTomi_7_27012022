@@ -17,7 +17,7 @@
     "yup": "^0.32.11"
   },
   "scripts": {
-    "sass" : "sass src/Sass:src/Css --watch --no-source-map",
+    "sass": "sass --watch ./src/sass/App.scss:./src/App.css",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
