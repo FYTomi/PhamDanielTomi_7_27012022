@@ -23,7 +23,7 @@ app.use(cors());
 const db = require("./models");
 
 //Enregistrement des routes API
-app.use("/api/auth", usersRoutes);
+app.use("/auth", usersRoutes);
 app.use("/posts", postsRoutes);
 app.use("/comments",commentsRoutes);
 
