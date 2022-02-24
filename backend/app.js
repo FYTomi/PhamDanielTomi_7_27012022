@@ -1,7 +1,7 @@
 const express = require("express");
 require("dotenv").config({ path: "./config/.env" });
 const cors = require("cors");
-//require('./config/sql');
+
 const path = require('path');
 
 //Importation routes
@@ -34,6 +34,6 @@ app.use("/images", express.static(path.join(__dirname, "images")));
 db.sequelize.sync().then((req) => {
   //Serveur
   app.listen(process.env.PORT, () => {
-    console.log(`Listening on port ${process.env.PORT}`);
+    console.log(`Connecté à la base de donnée MySQL, Listening on port ${process.env.PORT}`);
   });
 });
