@@ -4,7 +4,7 @@ const router = express.Router();
 const multer = require('../middlewares/multer')
 
 //Importation middleware token authentificateur
-const auth = require("../middlewares/authentification");
+const {validateToken} = require('../middlewares/authentification')
 
 //Controleur pour associer les fonctions aux différentes routes
 const postsCtrl = require("../controllers/posts_controllers");
@@ -17,12 +17,12 @@ const postsCtrl = require("../controllers/posts_controllers");
 //PUT - Mettre à jour le texte d'un post
 //DELETE - Supprime un post
 
-router.get ("/posts",auth, postsCtrl.displayPosts);
-router.get ("/post/:id",auth, postsCtrl.displayPost);
+router.get ("/posts",validateToken, postsCtrl.displayPosts);
+router.get ("/post/:id", postsCtrl.displayPost);
 router.get ("/userPosts/:id", postsCtrl.displayUserPosts);
-router.post ("/post",auth,multer, postsCtrl.createPost);
-router.put ("/changeTitle",auth, postsCtrl.changePostTitle);
-router.put ("/changeText",auth, postsCtrl.changePostText);
-router.delete ("/:postId",auth, postsCtrl.deletePost);
+router.post ("/post",validateToken,multer, postsCtrl.createPost);
+router.put ("/changeTitle",validateToken, postsCtrl.changePostTitle);
+router.put ("/changeText",validateToken, postsCtrl.changePostText);
+router.delete ("/:postId",validateToken, postsCtrl.deletePost);
 
 module.exports = router;

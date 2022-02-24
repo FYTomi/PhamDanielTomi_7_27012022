@@ -55,6 +55,16 @@ exports.login = async(req, res) => {
   }
 };
 
+//Middleware pour vérifier si l'utilisateur est authentifié
+
+exports.authentify = async(req,res) => {
+  const {username} = req.user
+  const user = await Users.findOne({where: {username: username}})
+
+  req.user.adminStatus = user.adminStatus
+  res.json(req.user)
+};
+
 
 //Récupération des infos d'un compte
 

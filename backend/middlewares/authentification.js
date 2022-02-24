@@ -1,20 +1,22 @@
-const jwt = require('jsonwebtoken');
+const { verify } = require("jsonwebtoken");
 
-module.exports = (req, res, next) => {
+const validateToken = async (req, res, next) => {
+  const accessToken = req.header("accessToken"); 
+
+  // Vérifie si l'utilisateur est connecté
+  if (!accessToken) return res.json({ error: "L'utilisateur n'est pas connecté !" });
+
+  
   try {
-    //on récupère le token en tant que deuxième élément dans le header authorization
-    const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, process.env.USER_TOKEN);
-    
-    //on récupère le userId de l'object decodedToken et on le vérifie dans le if
-    const userId = decodedToken.userId;
+    const validToken = verify(accessToken, `RANDOM_TOKEN_SECRET`); 
 
-    if (req.body.userId && req.body.userId !== userId) {
-      res.status(403).json({ error: 'Utilisateur non autorisé' });
-    } else {
-      next();
+    
+    if (validToken) {
+      return next();
     }
-  } catch {
-    res.status(403).json({ error: 'Utilisateur non autorisé' });
+  } catch (err) {
+    return res.json({ error: err });
   }
 };
+
+module.exports = { validateToken };

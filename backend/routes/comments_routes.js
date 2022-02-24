@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 //Importation middleware token authentificateur
-const auth = require("../middlewares/authentification");
+const {validateToken} = require('../middlewares/authentification')
 
 //Controleur pour associer les fonctions aux différentes routes
 const commentsCtrl = require("../controllers/comments_controllers");
@@ -13,7 +13,7 @@ const commentsCtrl = require("../controllers/comments_controllers");
 //DELETE - Supprimer son commentaire
 
 router.get ("/:postId", commentsCtrl.displayPostComments);
-router.post ("/",auth, commentsCtrl.addComment);
-router.delete ("/:commentId",auth, commentsCtrl.deleteComment);
+router.post ("/",validateToken, commentsCtrl.addComment);
+router.delete ("/:commentId",validateToken, commentsCtrl.deleteComment);
 
 module.exports = router;
