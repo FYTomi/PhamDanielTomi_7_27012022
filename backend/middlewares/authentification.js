@@ -1,14 +1,15 @@
 const { verify } = require("jsonwebtoken");
-
+require('dotenv').config
 const validateToken = async (req, res, next) => {
   const accessToken = req.header("accessToken"); 
 
   // Vérifie si l'utilisateur est connecté
   if (!accessToken) return res.json({ error: "L'utilisateur n'est pas connecté !" });
 
-  
+  //Si il est connecté, on compate les
   try {
-    const validToken = verify(accessToken, `RANDOM_TOKEN_SECRET`); 
+    const validToken = verify(accessToken, `${process.env.USER_TOKEN}`); 
+    req.user = validToken
 
     
     if (validToken) {

@@ -2,6 +2,7 @@
 const bcrypt = require("bcrypt");
 const { sign } = require('jsonwebtoken')
 const { Users } = require('../models')
+require('dotenv').config()
 
 //Middleware pour l'enregistrement de nouveau utilisateur
 exports.signup = async(req, res) => {
@@ -45,7 +46,7 @@ exports.login = async(req, res) => {
         const accessToken = sign(
           { username: user.username, 
             id: user.id }, 
-          "RANDOM_TOKEN_SECRET",
+          `${process.env.USER_TOKEN}`,
         );
         // Si c'est OK, envoi le token avec l'accessToken, l'username et l'id
         res.json({  token: accessToken, 
