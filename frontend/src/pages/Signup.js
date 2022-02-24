@@ -1,8 +1,8 @@
+//importation
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useHistory } from "react-router-dom";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function Signup() {
   const initialValues = {
@@ -37,7 +37,7 @@ function Signup() {
     });
   };
   return (
-    <div className="centerVertical">
+    <div className="form">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
