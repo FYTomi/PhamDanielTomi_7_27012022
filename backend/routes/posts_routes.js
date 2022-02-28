@@ -17,12 +17,12 @@ const postsCtrl = require("../controllers/posts_controllers");
 //PUT - Mettre à jour le texte d'un post
 //DELETE - Supprime un post
 
-router.get ("/posts",validateToken, postsCtrl.displayPosts);
+router.get ("/",validateToken, postsCtrl.displayPosts);
 router.get ("/post/:id", postsCtrl.displayPost);
 router.get ("/userPosts/:id", postsCtrl.displayUserPosts);
-router.post ("/post",validateToken,multer, postsCtrl.createPost);
-router.put ("/changeTitle",validateToken, postsCtrl.changePostTitle);
-router.put ("/changeText",validateToken, postsCtrl.changePostText);
+router.post ("/",validateToken,multer.uploadImage, postsCtrl.createPost);
+router.put ("/title",validateToken, postsCtrl.changePostTitle);
+router.put ("/postText",validateToken, postsCtrl.changePostText);
 router.delete ("/:postId",validateToken, postsCtrl.deletePost);
 
 module.exports = router;
