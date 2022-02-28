@@ -1,5 +1,5 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
+import { BrowserRouter, Route, Routes, Link } from "react-router-dom"
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { AuthContext } from "./helpers/AuthContext";
@@ -10,8 +10,8 @@ import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import Profile from "./pages/Profile"
 import Post from "./pages/Post"
-
-
+import Home from "./pages/Home"
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -60,7 +60,7 @@ function App() {
 return (
   <div className="App">
     <AuthContext.Provider value={{authState, setAuthState}}>
-      <Router>
+      <BrowserRouter>
         <div className="navbar">
           <div className="navlinks">
            {/* Si authState false (non login) afficher sur la navbar : logo, login et registration */}
@@ -103,10 +103,12 @@ return (
 						<Route path="/login" exact component={Login} />
             <Route path="/profile/:id" exact component={Profile} />
             <Route path="/post/:id" exact component={Post} />
+            <Route path="/posts" exact component={Home} />
+            <Route path="*" exact component={PageNotFound} />
 
-					</Routes>
+				</Routes>
 
-      </Router>
+      </BrowserRouter>
     </AuthContext.Provider>
   </div>
 )

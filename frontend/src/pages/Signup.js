@@ -2,14 +2,14 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import axios from "axios"
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const initialValues = {
-    username: "",
-    password: "",
-    email: "",
+    username: '',
+    password: '',
+    email: '',
   };
 
   const validationSchema = Yup.object().shape({
@@ -21,15 +21,13 @@ function Signup() {
       .min(4, "Password must be at least 4 characters")
       .max(20, "Password must not exceed 20 characters")
       .required("Password is required"),
-    email: Yup.string()
-        .required("Email is required")
-        .email("Email is invalid"),
+    email: Yup.string().required("Email is required").email("Email is invalid"),
   });
 
   let navigate = useNavigate();
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/auth", data).then((response) => {
+    axios.post("http://localhost:5000/auth/signup", data).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
       } else {
@@ -48,8 +46,8 @@ function Signup() {
           <ErrorMessage name="username" component="span" />
           <Field
             autoComplete="off"
-            type= "text"
-            className="form-control"
+            type="text"
+            className="inputCreatePost"
             name="username"
             placeholder="Username"
           />
@@ -58,7 +56,7 @@ function Signup() {
           <Field
             autoComplete="off"
             type="password"
-            className="form-control"
+            className="inputCreatePost"
             name="password"
             placeholder="Mot de passe"
           />
@@ -67,7 +65,7 @@ function Signup() {
           <Field
             autoComplete="off"
             type="email"
-            className="form-control"
+            className="inputCreatePost"
             name="email"
             placeholder="Votre email"
           />

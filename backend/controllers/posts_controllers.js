@@ -1,5 +1,5 @@
 //Imporations
-const { Posts, Likes } = require('../models');
+const { Posts } = require('../models');
 const { post } = require('../routes/user_routes');
 
 
@@ -7,14 +7,10 @@ const { post } = require('../routes/user_routes');
 
 exports.displayPosts = async(req,res) => {
     const getPosts = await Posts.findAll({ 
-		include: [Likes],
 		order: [['id', 'DESC']],
 	})
 
-	// Trouve tout les likes où UserId est celui qui est connecté
-	const likedPosts = await Likes.findAll({ where: { UserId: req.user.id } })
-
-	res.json({ getPosts, likedPosts })
+	res.json({getPosts})
 };
 
 //Middleware pour afficher un post
