@@ -9,6 +9,7 @@ import logo from "./icon.png"
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
 import Profile from "./pages/Profile"
+import Post from "./pages/Post"
 
 
 
@@ -101,6 +102,7 @@ return (
 						<Route path="/signup" exact component={Signup} />
 						<Route path="/login" exact component={Login} />
             <Route path="/profile/:id" exact component={Profile} />
+            <Route path="/post/:id" exact component={Post} />
 
 					</Routes>
 

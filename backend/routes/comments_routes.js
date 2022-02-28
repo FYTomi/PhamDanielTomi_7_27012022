@@ -12,7 +12,7 @@ const commentsCtrl = require("../controllers/comments_controllers");
 //POST - Créer un commentaire
 //DELETE - Supprimer son commentaire
 
-router.get ("/:postId", commentsCtrl.displayPostComments);
+router.get ("/:id", commentsCtrl.displayPostComments);
 router.post ("/",validateToken, commentsCtrl.addComment);
 router.delete ("/:commentId",validateToken, commentsCtrl.deleteComment);
 
