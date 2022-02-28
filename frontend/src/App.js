@@ -8,7 +8,7 @@ import logo from "./icon.png"
 //Importation des pages
 import Signup from "./pages/Signup"
 import Login from "./pages/Login"
-
+import Profile from "./pages/Profile"
 
 
 
@@ -100,6 +100,7 @@ return (
         <Routes>
 						<Route path="/signup" exact component={Signup} />
 						<Route path="/login" exact component={Login} />
+            <Route path="/profile/:id" exact component={Profile} />
 
 					</Routes>
 
