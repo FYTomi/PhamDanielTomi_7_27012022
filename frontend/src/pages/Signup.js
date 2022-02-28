@@ -2,7 +2,8 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useHistory } from "react-router-dom";
+import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const initialValues = {
@@ -25,14 +26,14 @@ function Signup() {
         .email("Email is invalid"),
   });
 
-  let history = useHistory();
+  let navigate = useNavigate();
 
   const onSubmit = (data) => {
     axios.post("http://localhost:5000/auth", data).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
       } else {
-        history.push("/login");
+        navigate.push("/login");
       }
     });
   };

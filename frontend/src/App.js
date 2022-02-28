@@ -1,9 +1,9 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom"
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { AuthContext } from "./helpers/AuthContext";
-import logo from "./logo.png"
+import logo from "./icon.png"
 
 //Importation des pages
 import Signup from "./pages/Signup"
@@ -92,16 +92,16 @@ return (
 							
 							{/* Si authState true (login), afficher l'icon logout */}
 							{authState.status && (
-								<LogoutIcon className="logout" onClick={logout}></LogoutIcon>
+								<button className="logout" onClick={logout}></button>
 							)}
           </div>
         </div>
 
-        <Switch>
-						<Route path="/registration" exact component={Registration} />
+        <Routes>
+						<Route path="/registration" exact component={Signup} />
 						<Route path="/login" exact component={Login} />
 
-					</Switch>
+					</Routes>
 
       </Router>
     </AuthContext.Provider>

@@ -2,7 +2,7 @@
 import React, { useState, useContext } from "react"
 import { Formik, Form, ErrorMessage } from "formik"
 import axios from "axios"
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { AuthContext } from "../helpers/AuthContext"
 
 function Login() {
@@ -18,7 +18,7 @@ function Login() {
 
 	const { setAuthState } = useContext(AuthContext) 
 
-	let history = useHistory()
+	let navigate = useNavigate()
 
 	const login = () => {
 		const data = { username: username, password: password } 
@@ -34,7 +34,7 @@ function Login() {
 					status: true,
 					adminStatus: response.data.adminStatus,
 				})
-				history.push('/')
+				navigate.push('/')
 			}
 		})
 	}
