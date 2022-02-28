@@ -69,7 +69,7 @@ return (
 										<img src={logo} alt={'logo'} className="logo" />
 									</Link>
 									<Link to="/login"> Se connecter</Link>
-									<Link to="/registration"> Inscription</Link>
+									<Link to="/signup"> Inscription</Link>
 								</>
 							) :
 							// Sinon affiche le logo et createpost
@@ -90,7 +90,7 @@ return (
 								<h1>{authState.username} </h1>
 							</Link>
 							
-							{/* Si authState true (login), afficher l'icon logout */}
+							{/* Si authState true (login), afficher le bouton logout */}
 							{authState.status && (
 								<button className="logout" onClick={logout}></button>
 							)}
@@ -98,7 +98,7 @@ return (
         </div>
 
         <Routes>
-						<Route path="/registration" exact component={Signup} />
+						<Route path="/signup" exact component={Signup} />
 						<Route path="/login" exact component={Login} />
 
 					</Routes>
