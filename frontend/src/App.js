@@ -13,6 +13,7 @@ import Profile from "./pages/Profile"
 import Post from "./pages/Post"
 import Home from "./pages/Home"
 import PageNotFound from "./pages/PageNotFound";
+import CreatePost from "./pages/CreatePost";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -94,18 +95,19 @@ return (
 							
 							{/* Si authState true (login), afficher le bouton logout */}
 							{authState.status && (
-								<button className="logout" onClick={logout}></button>
+								<button className="logout" onClick={logout}>Se déconnecter</button>
 							)}
           </div>
         </div>
 
         <Routes>
-						<Route path="/signup" exact component={Signup} />
-						<Route path="/login" exact component={Login} />
-            <Route path="/profile/:id" exact component={Profile} />
-            <Route path="/post/:id" exact component={Post} />
-            <Route path="/posts" exact component={Home} />
-            <Route path="*" exact component={PageNotFound} />
+						<Route path="/signup" element={<Signup/>} />
+						<Route path="/login"element={<Login/>} />
+            <Route path="/profile/:id" element={<Profile/>} />
+            <Route path="/post/:id" element={<Post/>} />
+            <Route path="/posts" element={<Home/>} />
+            <Route path="*" element={<PageNotFound/>} />
+            <Route path="/createpost" element={<CreatePost/>} />
 
 				</Routes>
 

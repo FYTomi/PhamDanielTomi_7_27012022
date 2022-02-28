@@ -24,16 +24,13 @@ module.exports = (sequelize, DataTypes)=>{
         }
     });
 
-//Relation entre un utilisateur et les différents posts, commentaires et likes qu'il peut avoir
+//Relation entre un utilisateur et les différents posts et commentairesqu'il peut avoir
 //Tous ces éléments seront supprimés si le compte est supprimé (onDelete: "cascade")
 Users.associate = (models) => {
     Users.hasMany(models.Posts, {
         onDelete: "cascade",
     });
     Users.hasMany(models.Comments, {
-        onDelete: "cascade",
-    });
-    Users.hasMany(models.Likes, {
         onDelete: "cascade",
     });
 };
