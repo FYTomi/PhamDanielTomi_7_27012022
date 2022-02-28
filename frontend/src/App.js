@@ -2,6 +2,8 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom"
 import axios from "axios"
 import { useState, useEffect } from "react"
+import { AuthContext } from "./helpers/AuthContext";
+import logo from "./logo.png"
 
 //Importation des pages
 import Signup from "./pages/Signup"
@@ -54,7 +56,57 @@ function App() {
     window.location.reload()
   }
 
+return (
+  <div className="App">
+    <AuthContext.Provider value={{authState, setAuthState}}>
+      <Router>
+        <div className="navbar">
+          <div className="navlinks">
+           {/* Si authState false (non login) afficher sur la navbar : logo, login et registration */}
+							{!authState.status ? (
+								<>
+									<Link to="/login">
+										<img src={logo} alt={'logo'} className="logo" />
+									</Link>
+									<Link to="/login"> Se connecter</Link>
+									<Link to="/registration"> Inscription</Link>
+								</>
+							) :
+							// Sinon affiche le logo et createpost
+							(
+								<>
+									<Link to="/">
+										<img src={logo} alt={'logo'} className="logo" />
+									</Link>
+			
+									<Link to="/createpost">Poster</Link>
+								</>
+							)}
+          </div>
+          
+          <div className="loggedInContainer">
+            {/* Affiche username */}
+							<Link to={`/profile/${authState.id}`} >
+								<h1>{authState.username} </h1>
+							</Link>
+							
+							{/* Si authState true (login), afficher l'icon logout */}
+							{authState.status && (
+								<LogoutIcon className="logout" onClick={logout}></LogoutIcon>
+							)}
+          </div>
+        </div>
 
+        <Switch>
+						<Route path="/registration" exact component={Registration} />
+						<Route path="/login" exact component={Login} />
+
+					</Switch>
+
+      </Router>
+    </AuthContext.Provider>
+  </div>
+)
 
 
 

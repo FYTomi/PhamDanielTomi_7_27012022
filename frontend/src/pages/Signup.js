@@ -47,6 +47,7 @@ function Signup() {
           <ErrorMessage name="username" component="span" />
           <Field
             autoComplete="off"
+            type= "text"
             className="form-control"
             name="username"
             placeholder="Username"
