@@ -91,7 +91,7 @@ return (
           <div className="loggedInContainer">
             {/* Affiche username */}
 							<Link to={`/profile/${authState.id}`} >
-								<h1>{authState.username} </h1>
+								<h1>Mon compte</h1>
 							</Link>
 							
 							{/* Si authState true (login), afficher le bouton logout */}

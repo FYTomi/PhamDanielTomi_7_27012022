@@ -89,7 +89,7 @@ function Post() {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => {
-        navigate("/");
+        navigate("/posts");
       });
   };
 
@@ -142,16 +142,12 @@ function Post() {
       <div className="leftSide">
         <div className="post" id="individual">
           {/* Modification du titre au click */}
-          <div
-            className="title"
-            onClick={() => {
-              // Seul la personne qui crée le post ou un modérateur peut le modifier
+          <div className="title" onClick={() => {
+              // Seul la personne qui crée le post ou un admin peut le modifier
               if (
                 authState.username === postObject.username ||
                 authState.adminStatus === true
-              ) {
-                editPost("title");
-              }
+              ) {editPost("title")}
             }}
           >
             {postObject.title}
@@ -160,13 +156,11 @@ function Post() {
           <div
             className="body"
             onClick={() => {
-              // Seul la personne qui crée le post ou un modérateur peut le modifier
+              // Seul la personne qui crée le post ou un admin peut le modifier
               if (
                 authState.username === postObject.username ||
                 authState.adminStatus === true
-              ) {
-                editPost("body");
-              }
+              ) {editPost("body")}
             }}
           >
             {postObject.postText}
@@ -178,10 +172,9 @@ function Post() {
               />
             )}
           </div>
-          {/* Username & like */}
+          {/* Username */}
           <div className="footer">
             <div className="username">{postObject.username}</div>
-            {/* {console.log(authState)} */}
             <div className="buttons">
               {(authState.username === postObject.username ||
                 authState.adminStatus === true) && (
@@ -224,9 +217,8 @@ function Post() {
                   <label>{comment.username}</label> : {comment.commentBody}
                 </div>
                 <div>
-                  {/* Affiche l'icon delete si username de authState égal celui qui l'a écrit */}
-                  {(authState.username === comment.username ||
-                    authState.adminStatus === true) && (
+                  {/* Affiche l'icon delete pour l'amin et si c'est l'utilisateur qui a posté le commentaire */}
+                  {(authState.username === comment.username || authState.adminStatus === true) && (
                     <DeleteIcon
                       className="delete"
                       onClick={() => {

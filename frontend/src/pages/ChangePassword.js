@@ -39,7 +39,7 @@ function ChangePassword() {
   };
 
   return (
-    <div className="centerVertical toTheLine">
+    <div className="register-form">
       <h1>Modifier votre mot de passe</h1>
       <input
         className="form-control"

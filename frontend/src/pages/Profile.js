@@ -1,3 +1,4 @@
+//Importation
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -35,7 +36,7 @@ function Profile() {
 			})
 			.then(() => {
 				alert('Compte supprimé')
-
+				//Renvoi l'utilisateur à la page login après suppression du compte
 				if (authState.id !== 1) {
 					localStorage.removeItem('accessToken')
 					setAuthState({ username: '', id: 0, status: false, adminStatus: false })
@@ -49,40 +50,29 @@ function Profile() {
     return (
 		<div className="profilePageContainer">
 			<div className="basicInfo">
+				
 				{/* Username */}
 				<h1>{username}</h1>
-				{/* Affiche changer le MDP si c'est l'utilisateur du profil qui est connecté */}
+				
+				{/* Affiche "Changer votre mot de passe" et "Supprimer votre compte" si c'est l'utilisateur du profil qui est connecté */}
 				{authState.username === username && (authState.adminStatus === false) && (
 					<>
-						<button
-							onClick={() => {
-								// Redirge vers la page password
-								navigate('/password')
-							}}
-						>
-							Changer votre Mot de passe
+						<button onClick={() => {navigate('/password')}}>
+							Changer votre mot de passe
 						</button>
 
-						<button
-						onClick={() => {
-							deleteAccount(id)
-						}}
-						>
+						<button onClick={() => {deleteAccount(id)}}>
 							Supprimer votre compte
 						</button>
 					</>
 				)}
-
+				
+				{/* Affiche "Changer le mot de passe" et "Supprimer le compte" si c'est l'administrateur qui est connecté */}
 				{(authState.adminStatus === true) && (
 					<>
 						{authState.username === username && (
-							<button
-								onClick={() => {
-									// Redirge vers la page password
-									navigate('/password')
-								}}
-							>
-								Changer votre mot de passe
+							<button onClick={() => {navigate('/password')}}>
+								Changer le mot de passe
 							</button>
 						)}
 
@@ -96,6 +86,7 @@ function Profile() {
 					</>
 				)}
 			</div>
+			
 			<div className="postsOfUser">
 				{/* Affiche tout les posts */}
 				{postsOfUser.map((value, key) => {
