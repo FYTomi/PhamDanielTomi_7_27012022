@@ -4,7 +4,7 @@ const multer = require('multer')
 const multerConfig = multer.diskStorage({
     // Où le fichier sera enregistré
     destination: (req, file, callback) => {
-        callback(null, '../client/public/')    
+        callback(null, 'images')    
     },
     // Le nom du fichier
     filename: (req, file, callback) => {
