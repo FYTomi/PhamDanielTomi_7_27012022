@@ -3,4 +3,9 @@
   color: blue;
 }
 
+.register-form {
+  max-width: 350px;
+  margin: auto;
+}
+
 /*# sourceMappingURL=App.css.map */

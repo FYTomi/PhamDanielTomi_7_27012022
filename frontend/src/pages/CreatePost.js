@@ -43,7 +43,7 @@ function CreatePost() {
         "content-type": "multipart/form-data", // multipart/form-data essentiel pour gérer les images
       })
       .then((response) => {
-        navigate.push("/"); // Si c'est OK redirige vers la page d'accueil
+        navigate.push("/posts"); // Si c'est OK redirige vers la page d'accueil
       })
       .catch((err) => {
         console.log("err", err);
@@ -65,14 +65,14 @@ function CreatePost() {
           <ErrorMessage name="title" component="span" />
           <Field
             autoComplete="off"
-            className="inputCreatePost"
+            className="form-control"
             name="title"
             placeholder="Donner un titre à votre post"
           />
           <ErrorMessage name="postText" component="span" />
           <Field
             autoComplete="off"
-            className="inputCreatePost"
+            className="form-control"
             name="postText"
             placeholder="Message"
           />

@@ -95,7 +95,7 @@ return (
 							
 							{/* Si authState true (login), afficher le bouton logout */}
 							{authState.status && (
-								<button className="logout" onClick={logout}>Se déconnecter</button>
+								<button className="btn btn-primary" onClick={logout}>Se déconnecter</button>
 							)}
           </div>
         </div>

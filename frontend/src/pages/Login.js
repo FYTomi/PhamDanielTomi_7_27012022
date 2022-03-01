@@ -32,20 +32,20 @@ function Login() {
           status: true,
           adminStatus: response.data.adminStatus,
         });
-        navigate.push("/");
+        navigate.push("/posts");
       }
     });
   };
 
   return (
-    <div className="form">
+    <div className="register-form">
       <Formik initialValues={initialValues} onSubmit={login}>
         <Form className="formContainer">
           <ErrorMessage name="username" component="span" />
           <input
             type="text"
             placeholder="Pseudo"
-            className="inputCreatePost"
+            className="form-control"
             onChange={(event) => {
               setUsername(event.target.value);
             }}
@@ -55,13 +55,13 @@ function Login() {
           <input
             type="password"
             placeholder="Mot de passe"
-            className="inputCreatePost"
+            className="form-control"
             onChange={(event) => {
               setPassword(event.target.value);
             }}
           />
 
-          <button type="submit">Connexion</button>
+          <button type="submit" className="btn btn-warning float-right">Connexion</button>
         </Form>
       </Formik>
     </div>

@@ -14,7 +14,7 @@ function Signup() {
 
   const validationSchema = Yup.object().shape({
     username: Yup.string()
-      .min(6, "Username must be at least 6 characters")
+      .min(4, "Username must be at least 6 characters")
       .max(20, "Username must not exceed 20 characters")
       .required("Username is required"),
     password: Yup.string()
@@ -36,41 +36,43 @@ function Signup() {
     });
   };
   return (
-    <div className="form">
+    <div className="register-form">
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
         validationSchema={validationSchema}
       >
-        <Form className="formContainer">
-          <ErrorMessage name="username" component="span" />
+        <Form className="form-group">
           <Field
             autoComplete="off"
             type="text"
-            className="inputCreatePost"
+            className="form-control"
             name="username"
             placeholder="Username"
           />
+          <ErrorMessage name="username" component="span" className="text-danger" />
 
-          <ErrorMessage name="password" component="span" />
+          
           <Field
             autoComplete="off"
             type="password"
-            className="inputCreatePost"
+            className="form-control"
             name="password"
             placeholder="Mot de passe"
           />
+          <ErrorMessage name="password" component="span" className="text-danger" />
 
-          <ErrorMessage name="email" component="span" />
+          
           <Field
             autoComplete="off"
             type="email"
-            className="inputCreatePost"
+            className="form-control"
             name="email"
             placeholder="Votre email"
           />
+          <ErrorMessage name="email" component="span" className="text-danger" />
 
-          <button type="submit">S'inscrire</button>
+          <button type="submit" className="btn btn-warning float-right" >S'inscrire</button>
         </Form>
       </Formik>
     </div>
