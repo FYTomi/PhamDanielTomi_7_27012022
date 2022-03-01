@@ -14,6 +14,7 @@ import Post from "./pages/Post"
 import Home from "./pages/Home"
 import PageNotFound from "./pages/PageNotFound";
 import CreatePost from "./pages/CreatePost";
+import ChangePassword from "./pages/ChangePassword";
 
 function App() {
   const [authState, setAuthState] = useState({
@@ -108,6 +109,7 @@ return (
             <Route path="/posts" element={<Home/>} />
             <Route path="*" element={<PageNotFound/>} />
             <Route path="/createpost" element={<CreatePost/>} />
+            <Route path="/password" element={ChangePassword} />
 
 				</Routes>
 

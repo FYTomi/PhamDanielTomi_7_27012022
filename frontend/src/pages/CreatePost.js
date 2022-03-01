@@ -38,7 +38,7 @@ function CreatePost() {
 
     // Titre et corps du texte
     axios
-      .post("http://localhost:5000/posts", formData, {
+      .post("http://localhost:5000/posts/", formData, {
         headers: { accessToken: localStorage.getItem("accessToken") },
         "content-type": "multipart/form-data", // multipart/form-data essentiel pour gérer les images
       })

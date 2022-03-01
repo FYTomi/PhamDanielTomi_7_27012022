@@ -19,14 +19,10 @@ module.exports = (sequelize, DataTypes) => {
     }
   });
 
-  //Relation entre un post et les différents commentaires et likes qu'il peut avoir
+  //Relation entre un post et les différents commentaires qu'il peut avoir
   //Tous ces éléments seront supprimés si le post est supprimé (onDelete: "cascade")
   Posts.associate = (models) => {
     Posts.hasMany(models.Comments, {
-      onDelete: "cascade",
-    });
-
-    Posts.hasMany(models.Likes, {
       onDelete: "cascade",
     });
   };

@@ -8,7 +8,6 @@ const path = require('path');
 const usersRoutes = require("./routes/user_routes");
 const postsRoutes = require("./routes/posts_routes");
 const commentsRoutes = require("./routes/comments_routes");
-const likeRoutes = require("./routes/likes_routes");
 
 const app = express();
 
