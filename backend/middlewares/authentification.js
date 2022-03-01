@@ -4,9 +4,10 @@ const validateToken = async (req, res, next) => {
   const accessToken = req.header("accessToken"); 
 
   // Vérifie si l'utilisateur est connecté
-  if (!accessToken) return res.json({ error: "L'utilisateur n'est pas connecté !" });
+  if (!accessToken) 
+    return res.json({ error: "L'utilisateur n'est pas connecté !" });
 
-  //Si il est connecté, on compate les
+  //Vérifie si le token est valide
   try {
     const validToken = verify(accessToken, `${process.env.USER_TOKEN}`); 
     req.user = validToken
