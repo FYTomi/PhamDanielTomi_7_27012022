@@ -31,7 +31,7 @@ function Signup() {
       if (response.data.error) {
         alert(response.data.error);
       } else {
-        navigate.push("/login");
+        navigate("/login");
       }
     });
   };

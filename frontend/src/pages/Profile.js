@@ -12,7 +12,7 @@ function Profile() {
 
     useEffect(() => {
 		if (!localStorage.getItem('accessToken')) {
-			navigate.push('/login')
+			navigate('/login')
 		} else {
 			// Récupère username et le rajoute au state
 			axios.get(`http://localhost:5000/auth/accountInfo/${id}`).then((response) => {
@@ -39,9 +39,9 @@ function Profile() {
 				if (authState.id !== 1) {
 					localStorage.removeItem('accessToken')
 					setAuthState({ username: '', id: 0, status: false, adminStatus: false })
-					navigate.push('/login')
+					navigate('/login')
 				} else {
-					navigate.push('/posts')
+					navigate('/posts')
 				}
 			})
 	}
@@ -57,10 +57,10 @@ function Profile() {
 						<button
 							onClick={() => {
 								// Redirge vers la page password
-								navigate.push('/password')
+								navigate('/password')
 							}}
 						>
-							Changer le MDP
+							Changer votre Mot de passe
 						</button>
 
 						<button
@@ -68,7 +68,7 @@ function Profile() {
 							deleteAccount(id)
 						}}
 						>
-							Supprimer le compte
+							Supprimer votre compte
 						</button>
 					</>
 				)}
@@ -79,7 +79,7 @@ function Profile() {
 							<button
 								onClick={() => {
 									// Redirge vers la page password
-									navigate.push('/password')
+									navigate('/password')
 								}}
 							>
 								Changer votre mot de passe
@@ -105,7 +105,7 @@ function Profile() {
 							<div
 								className="body"
 								onClick={() => {
-									navigate.push(`/post/${value.id}`)
+									navigate(`/post/${value.id}`)
 								}}
 							>
 								{value.postText}

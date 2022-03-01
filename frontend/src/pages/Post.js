@@ -17,7 +17,7 @@ function Post() {
   // Se lance quand on render la page
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
-      navigate.push("/login");
+      navigate("/login");
     } else {
       // Récupère un post grâce à son id
       axios.get(`http://localhost:5000/posts/post/${id}`).then((response) => {
@@ -89,7 +89,7 @@ function Post() {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => {
-        navigate.push("/");
+        navigate("/");
       });
   };
 

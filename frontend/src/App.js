@@ -78,7 +78,7 @@ return (
 							// Sinon affiche le logo et createpost
 							(
 								<>
-									<Link to="/">
+									<Link to="/posts">
 										<img src={logo} alt={'logo'} className="logo" />
 									</Link>
 			

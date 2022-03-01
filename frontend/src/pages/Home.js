@@ -11,7 +11,7 @@ function Home() {
   //Vérifif token, si false => renvois à la page login, si true => récupération des posts à afficher
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
-      navigate.push("/login");
+      navigate("/login");
     } else {
       axios
         .get("http://localhost:5000/posts", {
@@ -40,7 +40,7 @@ function Home() {
             <div
               className="body"
               onClick={() => {
-                navigate.push(`/post/${value.id}`);
+                navigate(`/post/${value.id}`);
               }}
             >
               {value.postText} {/* Corps du texte  */}

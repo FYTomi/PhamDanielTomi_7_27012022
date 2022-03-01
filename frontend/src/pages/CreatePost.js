@@ -17,7 +17,7 @@ function CreatePost() {
   //Vérifif token, si false => renvois à la page login
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
-      navigate.push("/login");
+      navigate("/login");
     }
   }, [navigate]);
 
@@ -43,7 +43,7 @@ function CreatePost() {
         "content-type": "multipart/form-data", // multipart/form-data essentiel pour gérer les images
       })
       .then((response) => {
-        navigate.push("/posts"); // Si c'est OK redirige vers la page d'accueil
+        navigate("/posts"); // Si c'est OK redirige vers la page d'accueil
       })
       .catch((err) => {
         console.log("err", err);
