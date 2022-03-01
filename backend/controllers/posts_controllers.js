@@ -1,6 +1,6 @@
 //Imporations
 const { Posts } = require('../models');
-const { post } = require('../routes/user_routes');
+const { post } = require('../routes/posts_routes');
 
 
 //Middleware pour afficher tous les posts et les affiches du plus récent au plus ancient
@@ -35,15 +35,23 @@ exports.displayUserPosts = async (req, res) => {
 //Middleware récupérant les données du formulaire pour un nouveau post
 
 exports.createPost = async (req, res) => {
-    post = req.body
-    post.username = req.user.username
-    post.UserId = req.user.id
-    await Posts.create(post)
-        .then((result) =>{
-            post.postId = result.id
-            module.exports.post = post.postId
-        })
-        res.status(201).json(post)
+   console.log(req.user.username)
+    Posts.create({
+        title: req.body.title,
+        postText: req.body.postText,
+        username: req.user.username,
+        UserId: req.user.id,
+        imageUrl: `${req.protocol}://${req.get("host")}/images/${
+            req.file.filename
+          }`
+    }).then(function(){
+        res.status(201).json({message: "Success"});
+    }).catch(function(error){
+        console.log(error)
+        res.status(400).json({message: "Error"});
+    })
+    
+
 };
 
 //Middleware pour modifier le titre d'un post

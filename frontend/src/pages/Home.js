@@ -18,8 +18,9 @@ function Home() {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then((response) => {
+          console.log(response.data)
           // Modifie les states avec le contenu de la BDD
-          setListOfPosts(response.data.listOfPosts);
+          setListOfPosts(response.data.getPosts);
         })
         .catch((err) => {
           console.log("err", err);
@@ -30,7 +31,7 @@ function Home() {
   return (
     <div>
       {/* Utilise map pour afficher chaque post du state */}
-      {listOfPosts.map((value, key) => {
+      {listOfPosts?.map((value, key) => {
         return (
           // Utilise key pour avoir un id unique, et ne pas avoir de warning
           <div key={key} className="post">

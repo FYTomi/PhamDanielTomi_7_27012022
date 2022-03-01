@@ -2,7 +2,7 @@ const { verify } = require("jsonwebtoken");
 require('dotenv').config
 const validateToken = async (req, res, next) => {
   const accessToken = req.header("accessToken"); 
-
+console.log(accessToken)
   // Vérifie si l'utilisateur est connecté
   if (!accessToken) 
     return res.json({ error: "L'utilisateur n'est pas connecté !" });
