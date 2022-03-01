@@ -61,15 +61,15 @@ function CreatePost() {
         validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
-        <Form className="formContainer">
-          <ErrorMessage name="title" component="span" />
+        <Form className="register-form">
+          <ErrorMessage name="title" component="span" className="text-danger" />
           <Field
             autoComplete="off"
             className="form-control"
             name="title"
             placeholder="Donner un titre à votre post"
           />
-          <ErrorMessage name="postText" component="span" />
+          <ErrorMessage name="postText" component="span" className="text-danger"/>
           <Field
             autoComplete="off"
             className="form-control"
@@ -78,7 +78,7 @@ function CreatePost() {
           />
           {/* input parcourir qui permet d'envoyer la photo au backend */}
           <input type="file" name="photo" onChange={onInputChange} />
-          <button type="submit">Publier</button>
+          <button type="submit" className="btn btn-warning">Publier</button>
         </Form>
       </Formik>
     </div>
