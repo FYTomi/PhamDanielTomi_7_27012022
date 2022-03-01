@@ -42,9 +42,10 @@ function App() {
             status: true,
             adminStatus: response.data.adminStatus,
           })
-        }
-      })
-  });
+				}
+			})
+	// eslint-disable-next-line
+	}, [])
 
   // Déconnection 
 

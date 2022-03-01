@@ -8,7 +8,7 @@ function Home() {
   const [listOfPosts, setListOfPosts] = useState([]); // Liste des posts
   let navigate = useNavigate();
 
-  //Vérifif token, si false => renvois à la page login, si true => récupération des posts à afficher
+  //Vérifie le token, si false => renvois à la page login, si true => récupération des posts à afficher
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
       navigate("/login");

@@ -5,7 +5,7 @@ const { post } = require('../routes/user_routes');
 
 //Middleware pour afficher tous les posts et les affiches du plus récent au plus ancient
 
-exports.displayPosts = async(req,res) => {
+exports.displayPosts = async(req, res) => {
     const getPosts = await Posts.findAll({ 
 		order: [['id', 'DESC']],
 	})
