@@ -79,10 +79,10 @@ return (
 							(
 								<>
 									<Link to="/posts">
-										<img src={logo} alt={'logo'} className="logo" />
+										<h1>Accueil</h1>
 									</Link>
 			
-									<Link to="/createpost">Poster</Link>
+									<Link to="/createpost"><h2>Poster</h2></Link>
 								</>
 							)}
           </div>
