@@ -154,7 +154,7 @@ function Post() {
           </div>
           {/* Modification du texte au click */}
           <div
-            className="body"
+            className="description"
             onClick={() => {
               // Seul la personne qui crée le post ou un admin peut le modifier
               if (
