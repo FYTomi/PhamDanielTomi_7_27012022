@@ -51,8 +51,8 @@ function Home() {
             </div>
             <div className="footer">
               {/* Username */}
-              <div className="username">
-                <Link to={`/profile/${value.UserId}`}> {value.username} </Link>
+              <div className="container-content">
+                <Link to={`/profile/${value.UserId}`}>Post ajouté par {value.username} </Link>
               </div>
             </div>
           </div>

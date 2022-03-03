@@ -55,7 +55,7 @@ function Profile() {
 				{/* Affiche la page de l'utilisateur avec son nom */}
 				{postsOfUser?.map((value, key) => {
 					return (
-						<h1 key={key} className="post">
+						<h1 key={key}>
 							Les posts de {value.username}
 						</h1>
 					)
@@ -91,7 +91,7 @@ function Profile() {
 				)}
 			</div>
 			
-			<div className="postsOfUser">
+			<div className="posts">
 				{/* Affiche tout les posts */}
 				{postsOfUser?.map((value, key) => {
 					return (

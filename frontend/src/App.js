@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Routes, Link } from "react-router-dom"
 import axios from "axios"
 import { useState, useEffect } from "react"
 import { AuthContext } from "./helpers/AuthContext";
-import logo from "./icon.png"
 import banner from "./banner.png"
 
 //Importation des pages
@@ -67,7 +66,7 @@ return (
     <AuthContext.Provider value={{authState, setAuthState}}>
       <BrowserRouter>
       <div id="center-element">
-        <img src={banner} alt={"banner"} classname="banner"/>
+      <Link to="/posts"><img src={banner} alt={"banner"} classname="banner"/></Link>
         <h1 id='titre'>Groupomania - un réseau social d'entreprise</h1>
       </div>
         <div className="navbar">
@@ -75,9 +74,6 @@ return (
            {/* Si authState false (non login) afficher sur la navbar : logo, login et registration */}
 							{!authState.status ? (
 								<>
-									<Link to="/login">
-										<img src={logo} alt={'logo'} className="logo" />
-									</Link>
 									<Link to="/login"> <h2>Se connecter</h2></Link>
 									<Link to="/signup"> <h2>Inscription</h2></Link>
 								</>

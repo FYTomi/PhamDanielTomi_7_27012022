@@ -1,14 +1,92 @@
+.addCommentContainer {
+  font-weight: bold;
+  border: none;
+  padding-left: 10px;
+  height: 50px;
+}
+
 .App {
-  text-align: center;
-  color: blue;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  flex-direction: column;
+}
+
+img {
+  max-width: 70%;
+}
+
+.navbar {
+  margin: 30px;
+}
+
+.post {
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  margin: 0 30px 30px 20px;
+}
+
+.post:hover {
+  opacity: 0.8;
+  box-shadow: 0 0 10px #6e6e6e;
+}
+
+.post:hover {
+  cursor: pointer;
+}
+
+.imagePost {
+  max-height: 50%;
+  max-width: 50%;
+  border-radius: 10%;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 15px;
+}
+
+.container-content {
+  font-size: 1.2rem;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.addCommentContainer {
+  display: flex;
+  align-items: center;
+}
+
+.postPage {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.footer {
+  display: flex;
+}
+
+.comment {
+  display: flex;
+  background-color: #f2f2f2;
+  border-radius: 20px;
+  margin: 0 30px 30px 20px;
+  font-size: 1.2rem;
 }
 
 .register-form {
-  max-width: 350px;
-  margin: auto;
+  width: 30%;
+  margin: 0 auto;
 }
 
-#root {
-  padding: 30px;
+.form-control {
+  margin: 0px 0px 15px 0;
 }
+
+.delete:hover {
+  cursor: pointer;
+}
+
 /*# sourceMappingURL=App.css.map */

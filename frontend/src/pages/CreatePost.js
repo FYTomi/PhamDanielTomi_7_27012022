@@ -62,6 +62,7 @@ function CreatePost() {
         onSubmit={onSubmit}
       >
         <Form className="register-form">
+          <h1>Ajouter un post</h1>
           <ErrorMessage name="title" component="span" className="text-danger" />
           <Field
             autoComplete="off"

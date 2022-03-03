@@ -1,5 +1,8 @@
-.App {
-    text-align: center;
-    color: blue;
-  }
-  
+@import "./composants/post-submit";
+@import "./utils/main";
+@import "./composants/banner";
+@import "./layouts/post";
+@import "./layouts/footer-post";
+@import "./composants/comment";
+@import "./composants/register-form";
+@import "./composants/delete-button";

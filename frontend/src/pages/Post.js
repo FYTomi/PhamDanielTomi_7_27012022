@@ -173,17 +173,12 @@ function Post() {
             )}
           </div>
           {/* Username */}
-          <div className="footer">
-            <div className="username">{postObject.username}</div>
+          <div className="container-content">
+            <div className="username">Post ajouté par {postObject.username}</div>
             <div className="buttons">
               {(authState.username === postObject.username ||
                 authState.adminStatus === true) && (
-                <DeleteIcon
-                  className="delete"
-                  onClick={() => {
-                    deletePost(postObject.id);
-                  }}
-                ></DeleteIcon>
+                <DeleteIcon onClick={() => {deletePost(postObject.id); }}></DeleteIcon>
               )}
             </div>
           </div>
@@ -193,6 +188,7 @@ function Post() {
       <div className="rightSide">
         {/* Ajout d'un commentaire */}
         <div className="addCommentContainer">
+          <div className="title">Ajouter un commentaire</div>
           <input
             type="text"
             placeholder="Votre commentaire..."
@@ -216,15 +212,13 @@ function Post() {
                   {/* Affiche username et le commentaire depuis l'objet comment */}
                   <label>{comment.username}</label> : {comment.commentBody}
                 </div>
-                <div>
-                  {/* Affiche l'icon delete pour l'amin et si c'est l'utilisateur qui a posté le commentaire */}
-                  {(authState.username === comment.username || authState.adminStatus === true) && (
-                    <DeleteIcon
-                      className="delete"
+                <div  className="delete"
                       onClick={() => {
                         deleteComment(comment.id);
-                      }}
-                    ></DeleteIcon>
+                      }}>
+                  {/* Affiche l'icon delete pour l'admin et si c'est l'utilisateur qui a posté le commentaire */}
+                  {(authState.username === comment.username || authState.adminStatus === true) && (
+                    <DeleteIcon></DeleteIcon>
                   )}
                 </div>
               </div>

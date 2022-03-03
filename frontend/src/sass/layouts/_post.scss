@@ -1,0 +1,43 @@
+.post {
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    margin: 0 30px 30px 20px;
+}
+
+.post:hover{
+    opacity: 0.8;
+    box-shadow: 0 0 10px #6e6e6e;
+}
+
+.post:hover{
+    cursor: pointer;
+  }
+
+  .imagePost {
+    max-height: 50%;
+    max-width: 50%;
+    border-radius: 10%;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 15px;
+}
+
+.container-content {
+    font-size: 1.2rem;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.addCommentContainer {
+    display:flex;
+    align-items: center;
+}
+
+.postPage {
+    max-width: 80%;
+    margin: 0 auto;
+}
