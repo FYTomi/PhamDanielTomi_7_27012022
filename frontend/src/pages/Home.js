@@ -34,7 +34,7 @@ function Home() {
       {listOfPosts?.map((value, key) => {
         return (
           // Utilise key pour avoir un id unique, et ne pas avoir de warning
-          <div key={key} className="post">
+          <article key={key} className="post">
             {/* Titre */}
             <div className="title"> {value.title} </div>
             {/* Au click sur le post, redirige vers la page du post */}
@@ -55,7 +55,7 @@ function Home() {
                 <Link to={`/profile/${value.UserId}`}>Post ajouté par {value.username} </Link>
               </div>
             </div>
-          </div>
+          </article>
         );
       })}
     </div>
