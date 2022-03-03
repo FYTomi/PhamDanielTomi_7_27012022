@@ -1,6 +1,5 @@
 //Imporations
 const { Posts } = require('../models');
-const { post } = require('../routes/posts_routes');
 
 
 //Middleware pour afficher tous les posts et les affiches du plus récent au plus ancient
@@ -23,8 +22,8 @@ exports.displayPost = async (req, res) => {
 
 //Middleware pour afficher les posts d'un utilisateur
 
-exports.displayUserPosts = async (req, res) => {
-    const id = req.param.id
+exports.displayUserPosts = async(req, res) => {
+    const id = req.params.id
     const postsOfUser = await Posts.findAll({
         where : {UserId: id},
         order:[['id', 'DESC']],
@@ -66,7 +65,7 @@ exports.changePostTitle = async (req,res) => {
 
 exports.changePostText = async (req,res) => {
     const { newText, id } = req.body
-    await Posts.update( {postText: new Text}, {where: {id:id} });
+    await Posts.update( {postText: newText}, {where: {id:id} });
     res.json(newText);
 };
 

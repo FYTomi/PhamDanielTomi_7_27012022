@@ -166,7 +166,7 @@ function Post() {
             {postObject.postText}
             {postObject.imageUrl && (
               <img
-                src={`../${postObject.imageUrl}`}
+                src={postObject.imageUrl}
                 className="imagePost"
                 alt=""
               />

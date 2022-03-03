@@ -51,8 +51,16 @@ function Profile() {
 		<div className="profilePageContainer">
 			<div className="basicInfo">
 				
-				{/* Username */}
-				<h1>{username}</h1>
+			<div className="userPost">
+				{/* Affiche la page de l'utilisateur avec son nom */}
+				{postsOfUser?.map((value, key) => {
+					return (
+						<h1 key={key} className="post">
+							Les posts de {value.username}
+						</h1>
+					)
+				})}
+			</div>
 				
 				{/* Affiche "Changer votre mot de passe" et "Supprimer votre compte" si c'est l'utilisateur du profil qui est connecté */}
 				{authState.username === username && (authState.adminStatus === false) && (
@@ -76,11 +84,7 @@ function Profile() {
 							</button>
 						)}
 
-						<button
-						onClick={() => {
-							deleteAccount(id)
-						}}
-						>
+						<button onClick={() => {deleteAccount(id)}}>
 							Supprimer le compte
 						</button>
 					</>
@@ -89,7 +93,7 @@ function Profile() {
 			
 			<div className="postsOfUser">
 				{/* Affiche tout les posts */}
-				{postsOfUser.map((value, key) => {
+				{postsOfUser?.map((value, key) => {
 					return (
 						<div key={key} className="post">
 							<div className="title"> {value.title} </div>
@@ -100,7 +104,7 @@ function Profile() {
 								}}
 							>
 								{value.postText}
-								{value.imageUrl && <img src={`../${value.imageUrl}`} className="imagePost" alt="" />}
+								{value.imageUrl && <img src={value.imageUrl} className="imagePost" alt="" />}
 							</div>
 							<div className="footer">
 								<div className="username">{value.username}</div>

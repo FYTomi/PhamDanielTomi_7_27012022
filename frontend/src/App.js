@@ -5,6 +5,7 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import { AuthContext } from "./helpers/AuthContext";
 import logo from "./icon.png"
+import banner from "./banner.png"
 
 //Importation des pages
 import Signup from "./pages/Signup"
@@ -65,6 +66,10 @@ return (
   <div className="App">
     <AuthContext.Provider value={{authState, setAuthState}}>
       <BrowserRouter>
+      <div id="center-element">
+        <img src={banner} alt={"banner"} classname="banner"/>
+        <h1 id='titre'>Groupomania - un réseau social d'entreprise</h1>
+      </div>
         <div className="navbar">
           <div className="navlinks">
            {/* Si authState false (non login) afficher sur la navbar : logo, login et registration */}
@@ -73,8 +78,8 @@ return (
 									<Link to="/login">
 										<img src={logo} alt={'logo'} className="logo" />
 									</Link>
-									<Link to="/login"> Se connecter</Link>
-									<Link to="/signup"> Inscription</Link>
+									<Link to="/login"> <h2>Se connecter</h2></Link>
+									<Link to="/signup"> <h2>Inscription</h2></Link>
 								</>
 							) :
 							// Sinon affiche le logo et createpost
@@ -110,7 +115,7 @@ return (
             <Route path="/posts" element={<Home/>} />
             <Route path="*" element={<PageNotFound/>} />
             <Route path="/createpost" element={<CreatePost/>} />
-            <Route path="/password" element={ChangePassword} />
+            <Route path="/password" element={<ChangePassword/>} />
 
 				</Routes>
 

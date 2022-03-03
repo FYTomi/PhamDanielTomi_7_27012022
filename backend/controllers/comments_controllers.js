@@ -5,7 +5,7 @@ const { Comments } = require('../models')
 //Middleware pour afficher les commentaires d'un post
 
 exports.displayPostComments = async(req, res) =>{
-    const postId = req.params.postId
+    const postId = req.params.id
     const showComments = await Comments.findAll({
         where: { PostId: postId}
     })
@@ -26,10 +26,8 @@ exports.addComment = async(req,res) =>{
 
 exports.deleteComment = async(req,res) => {
     const commentId = req.params.commentId
-    await Comment.destroy({
-        where: {
-            id: commentId,
-        },
+    await Comments.destroy({
+        where: {id: commentId}
     })
     res.json('Commentaire supprimé')
 }

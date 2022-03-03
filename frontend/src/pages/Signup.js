@@ -16,12 +16,14 @@ function Signup() {
     username: Yup.string()
       .min(4, "Username must be at least 6 characters")
       .max(20, "Username must not exceed 20 characters")
-      .required("Username is required"),
+      .required("Un nom d'utilisateur est requis"),
     password: Yup.string()
       .min(4, "Password must be at least 4 characters")
       .max(20, "Password must not exceed 20 characters")
-      .required("Password is required"),
-    email: Yup.string().required("Email is required").email("Email is invalid"),
+      .required("Un mot de passe et requis"),
+    email: Yup.string()
+    .required("Un email est requis")
+    .email("l'email est invalide"),
   });
 
   let navigate = useNavigate();
@@ -37,6 +39,7 @@ function Signup() {
   };
   return (
     <div className="register-form">
+      <h1>S'inscrire</h1>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -48,7 +51,7 @@ function Signup() {
             type="text"
             className="form-control"
             name="username"
-            placeholder="Username"
+            placeholder="Votre nom d'utilisateur"
           />
           <ErrorMessage name="username" component="span" className="text-danger" />
 
