@@ -78,6 +78,7 @@ function CreatePost() {
             placeholder="Message"
           />
           {/* input parcourir qui permet d'envoyer la photo au backend */}
+          <h2>Ajouter une image</h2>
           <input type="file" name="photo" onChange={onInputChange} />
           <button type="submit" className="btn btn-warning">Publier</button>
         </Form>
