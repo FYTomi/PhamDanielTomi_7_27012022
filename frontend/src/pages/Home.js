@@ -38,16 +38,15 @@ function Home() {
             {/* Titre */}
             <div className="title"> {value.title} </div>
             {/* Au click sur le post, redirige vers la page du post */}
-            <div
-              className="body"
+            <div className="body"
               onClick={() => {
                 navigate(`/post/${value.id}`);
               }}
             >
-              {value.postText} {/* Corps du texte  */}
               {value.imageUrl != null && (
-                <img src={value.imageUrl} className="imagePost" alt="" />
+                  <img src={value.imageUrl} className="imagePost" alt="" />
               )}
+               <div>{value.postText}</div> {/* Corps du texte  */}
             </div>
             <div className="footer">
               {/* Username */}

@@ -81,9 +81,8 @@ exports.accountInfo = async(req, res) => {
 //Modification d'un mot de passe
 
 exports.changePassword = async(req, res) => {
-  const { oldPassword, newPassword} = req.body
-
-  const user = await Users.findOne({ where : { username: req.user.username}})
+  const { oldPassword, newPassword, username} = req.body
+  const user = await Users.findOne({ where : { username: username}})
 
   bcrypt.compare(oldPassword, user.password).then((match) =>{
     if (!match) {
@@ -94,7 +93,7 @@ exports.changePassword = async(req, res) => {
         .then ((hash) =>{
           Users.update(
             {password: hash},
-            {where: {username: req.user.username} })
+            {where: {username: username} })
 
           res.status(200).json('Le mot de passe a bien été changé')
         });
@@ -107,9 +106,7 @@ exports.changePassword = async(req, res) => {
 exports.deleteAccount = async (req, res) => {
   const userId = req.params.id
   await Users.destroy ({
-    where: {
-      id:userId,
-    },
+    where: {id:userId},
   }),
   res.status(200).json("Le compte a été supprimé")
 };

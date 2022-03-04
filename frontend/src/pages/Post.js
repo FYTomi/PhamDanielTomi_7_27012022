@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../helpers/AuthContext";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function Post() {
   let { id } = useParams();
@@ -142,48 +142,57 @@ function Post() {
       <div className="leftSide">
         <div className="post" id="individual">
           {/* Modification du titre au click */}
-          <div className="title" onClick={() => {
+          <div
+            className="title"
+            onClick={() => {
               // Seul la personne qui crée le post ou un admin peut le modifier
               if (
                 authState.username === postObject.username ||
                 authState.adminStatus === true
-              ) {editPost("title")}
+              ) {
+                editPost("title");
+              }
             }}
           >
             {postObject.title}
           </div>
           {/* Modification du texte au click */}
           <div
-            className="description"
+            className="body"
             onClick={() => {
               // Seul la personne qui crée le post ou un admin peut le modifier
               if (
                 authState.username === postObject.username ||
                 authState.adminStatus === true
-              ) {editPost("body")}
+              ) {
+                editPost("body");
+              }
             }}
           >
-            {postObject.postText}
             {postObject.imageUrl && (
-              <img
-                src={postObject.imageUrl}
-                className="imagePost"
-                alt=""
-              />
+              <img src={postObject.imageUrl} className="imagePost" alt="" />
             )}
+            <div>{postObject.postText}</div>
           </div>
           {/* Username */}
           <div className="container-content">
-            <div className="username">Post ajouté par {postObject.username}</div>
+            <div className="username">
+              Post ajouté par {postObject.username}
+            </div>
             <div className="buttons">
-              {(authState.username === postObject.username || authState.adminStatus === true) && (
-                <DeleteIcon onClick={() => {deletePost(postObject.id); }}></DeleteIcon>
+              {(authState.username === postObject.username ||
+                authState.adminStatus === true) && (
+                <DeleteIcon
+                  onClick={() => {
+                    deletePost(postObject.id);
+                  }}
+                ></DeleteIcon>
               )}
             </div>
           </div>
         </div>
       </div>
-      
+
       <div>
         {/* Ajout d'un commentaire */}
         <div className="addCommentContainer">
@@ -211,12 +220,15 @@ function Post() {
                   {/* Affiche username et le commentaire depuis l'objet comment */}
                   <label>{comment.username}</label> : {comment.commentBody}
                 </div>
-                <div  className="delete"
-                      onClick={() => {
-                        deleteComment(comment.id);
-                      }}>
+                <div
+                  className="delete"
+                  onClick={() => {
+                    deleteComment(comment.id);
+                  }}
+                >
                   {/* Affiche l'icon delete pour l'admin ou si c'est l'utilisateur qui a posté le commentaire */}
-                  {(authState.username === comment.username || authState.adminStatus === true) && (
+                  {(authState.username === comment.username ||
+                    authState.adminStatus === true) && (
                     <DeleteIcon></DeleteIcon>
                   )}
                 </div>

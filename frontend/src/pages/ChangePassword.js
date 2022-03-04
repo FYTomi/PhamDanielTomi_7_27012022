@@ -41,22 +41,24 @@ function ChangePassword() {
   return (
     <div className="register-form">
       <h1>Modifier votre mot de passe</h1>
-      <input
-        className="form-control"
-        type="password"
-        placeholder="Votre ancien mot de passe"
-        onChange={(event) => {
-          setOldPassword(event.target.value); // Met à jour le state oldPassword
-        }}
-      />
-      <input
-        className="form-control"
-        type="password"
-        placeholder="Votre nouveau mot de passe"
-        onChange={(event) => {
-          setNewPassword(event.target.value); // Met à jour le state newPassword
-        }}
-      />
+      <form>
+        <input
+          className="form-control"
+          type="password"
+          placeholder="Votre ancien mot de passe"
+          onChange={(event) => {
+            setOldPassword(event.target.value); // Met à jour le state oldPassword
+          }}
+        />
+        <input
+          className="form-control"
+          type="password"
+          placeholder="Votre nouveau mot de passe"
+          onChange={(event) => {
+            setNewPassword(event.target.value); // Met à jour le state newPassword
+          }}
+        />
+      </form>
       <button id="btn" onClick={changePassword}> Modifier</button>
     </div>
   );

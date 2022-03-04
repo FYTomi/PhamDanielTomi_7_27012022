@@ -3,6 +3,8 @@
   border: none;
   padding-left: 10px;
   height: 50px;
+  margin: 30px auto;
+  width: 70%;
 }
 
 .App {
@@ -13,7 +15,7 @@
 }
 
 img {
-  max-width: 70%;
+  width: 40%;
   margin-left: 30px;
 }
 
@@ -24,7 +26,8 @@ img {
 .post {
   background-color: #f2f2f2;
   border-radius: 20px;
-  margin: 0 30px 30px 20px;
+  margin: 30px auto;
+  width: 70%;
 }
 
 .post:hover {
@@ -64,6 +67,12 @@ img {
 .postPage {
   max-width: 80%;
   margin: 0 auto;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .footer {
