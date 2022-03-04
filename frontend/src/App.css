@@ -14,6 +14,7 @@
 
 img {
   max-width: 70%;
+  margin-left: 30px;
 }
 
 .navbar {
@@ -89,6 +90,18 @@ img {
 
 .delete:hover {
   cursor: pointer;
+}
+
+.accountOptions {
+  max-width: 20%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#titre {
+  margin: 30px;
 }
 
 /*# sourceMappingURL=App.css.map */
