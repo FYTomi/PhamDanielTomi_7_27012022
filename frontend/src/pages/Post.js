@@ -176,16 +176,15 @@ function Post() {
           <div className="container-content">
             <div className="username">Post ajouté par {postObject.username}</div>
             <div className="buttons">
-              {(authState.username === postObject.username ||
-                authState.adminStatus === true) && (
+              {(authState.username === postObject.username || authState.adminStatus === true) && (
                 <DeleteIcon onClick={() => {deletePost(postObject.id); }}></DeleteIcon>
               )}
             </div>
           </div>
         </div>
       </div>
-      {/* Côté droit */}
-      <div className="rightSide">
+      
+      <div>
         {/* Ajout d'un commentaire */}
         <div className="addCommentContainer">
           <div className="title">Ajouter un commentaire</div>
@@ -216,7 +215,7 @@ function Post() {
                       onClick={() => {
                         deleteComment(comment.id);
                       }}>
-                  {/* Affiche l'icon delete pour l'admin et si c'est l'utilisateur qui a posté le commentaire */}
+                  {/* Affiche l'icon delete pour l'admin ou si c'est l'utilisateur qui a posté le commentaire */}
                   {(authState.username === comment.username || authState.adminStatus === true) && (
                     <DeleteIcon></DeleteIcon>
                   )}

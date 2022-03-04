@@ -57,6 +57,7 @@ img {
 .addCommentContainer {
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
 }
 
 .postPage {
