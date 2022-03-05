@@ -23,7 +23,7 @@ Git, NODE, npm et Mysql
 Cloner ce repository avec git 
 
 ```bash
-https://github.com/FYTomi/PhamDanielTomi_7_27012022.git
+git clone https://github.com/FYTomi/PhamDanielTomi_7_27012022.git
 ```
 
 ## MySQL
