@@ -6,15 +6,15 @@ C’est un réseau social interne où les utilisateurs peuvent poster des photos
 
 ## Technologies utilisés  ##
 
-### backend ### : 
+### backend: 
 
 NodeJS, Express, Sequelize ORM, MySQL, bcrypt et jsonwebtoken
 
-### frontend ###: 
+### frontend: 
 
 react, axios et bootstrap
 
-## Prérequie ##
+## Prérequis ##
 
 Git, NODE, npm et Mysql 
 
