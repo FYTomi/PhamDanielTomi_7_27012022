@@ -12,7 +12,7 @@ NodeJS, Express, Sequelize ORM, MySQL, bcrypt et jsonwebtoken
 
 ### frontend: 
 
-react, axios et bootstrap
+React, axios, Formik, Yup, bootstrap et sass
 
 ## Prérequis ##
 
