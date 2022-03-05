@@ -89,7 +89,7 @@ function Post() {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then(() => {
-        navigate("/posts");
+        navigate("/");
       });
   };
 
@@ -116,7 +116,7 @@ function Post() {
         setPostObject({ ...postObject, title: newTitle }); // On garde postObject et on change uniquement title
       }
     }
-    // Modifie le corps du post, même principe que pour le titre
+    // Modifie la description du post, même principe que pour le titre
     else {
       let newPostText = prompt("Nouveau texte :");
       if (newPostText !== undefined && newPostText !== "") {
@@ -131,16 +131,15 @@ function Post() {
           }
         );
 
-        setPostObject({ ...postObject, postText: newPostText });
+        setPostObject({ ...postObject, postText: newPostText }); // On garde postObject et on change uniquement la description
       }
     }
   };
 
   return (
     <div className="postPage">
-      {/* Côté gauche : post */}
-      <div className="leftSide">
-        <div className="post" id="individual">
+      <div>
+        <div className="post">
           {/* Modification du titre au click */}
           <div
             className="title"
@@ -156,7 +155,7 @@ function Post() {
           >
             {postObject.title}
           </div>
-          {/* Modification du texte au click */}
+          {/* Modification de la description au click */}
           <div
             className="body"
             onClick={() => {
@@ -174,11 +173,13 @@ function Post() {
             )}
             <div>{postObject.postText}</div>
           </div>
-          {/* Username */}
+          {/* Affiche qui a posté le post */}
           <div className="container-content">
             <div className="username">
               Post ajouté par {postObject.username}
             </div>
+
+            {/* Affiche pour l'utilisateur ou un admin une icône de poubelle pour supprimer le post*/ }
             <div className="buttons">
               {(authState.username === postObject.username ||
                 authState.adminStatus === true) && (

@@ -47,7 +47,7 @@ function App() {
 	// eslint-disable-next-line
 	}, [])
 
-  // Déconnection 
+  // Déconnection , l'accessToken est enlevé et on réinitialise le state d'authentification de l'utilisateur
 
   const logout = () => {
     localStorage.removeItem('accessToken')
@@ -66,37 +66,36 @@ return (
     <AuthContext.Provider value={{authState, setAuthState}}>
       <BrowserRouter>
       <div id="center-element">
-      <Link to="/posts"><img src={banner} alt={"banner"} classname="banner"/></Link>
+      <Link to="/"><img src={banner} alt={"banner"} classname="banner"/></Link>
         <h1 id='titre'>Groupomania - un réseau social d'entreprise</h1>
       </div>
         <div className="navbar">
           <div className="navlinks">
-           {/* Si authState false (non login) afficher sur la navbar : logo, login et registration */}
+           {/* Si authState false (non connecté) afficher sur la navbar : banner (qui nous redirige pas sur posts), "Se connecter" et "Inscription" */}
 							{!authState.status ? (
 								<>
 									<Link to="/login"> <h2>Se connecter</h2></Link>
 									<Link to="/signup"> <h2>Inscription</h2></Link>
 								</>
 							) :
-							// Sinon affiche le logo et createpost
+							// Sinon affiche la navbar avec le banner, "Accueil" et "Poster"
 							(
 								<>
-									<Link to="/posts">
-										<h1>Accueil</h1>
-									</Link>
-			
-									<Link to="/createpost"><h2>Poster</h2></Link>
+									<Link to="/"><h1>Accueil</h1></Link>
+	                <Link to="/createpost"><h2>Poster</h2></Link>
 								</>
 							)}
           </div>
           
+          {/* Affichage sur la droite du nom d'utilisateur et le bouton "Se déconnecter"*/}
           <div className="loggedInContainer">
-            {/* Affiche username */}
+
+            {/* Affiche le nom d'utilisateur, clickable qui nous redirige vers sa page */}
 							<Link to={`/profile/${authState.id}`} >
 								<h1>{authState.username}</h1>
 							</Link>
 							
-							{/* Si authState true (login), afficher le bouton logout */}
+							{/* Si authState true (logged in), afficher le bouton logout */}
 							{authState.status && (
 								<button className="btn btn-primary" onClick={logout}>Se déconnecter</button>
 							)}
@@ -108,7 +107,7 @@ return (
 						<Route path="/login"element={<Login/>} />
             <Route path="/profile/:id" element={<Profile/>} />
             <Route path="/post/:id" element={<Post/>} />
-            <Route path="/posts" element={<Home/>} />
+            <Route path="/" element={<Home/>} />
             <Route path="*" element={<PageNotFound/>} />
             <Route path="/createpost" element={<CreatePost/>} />
             <Route path="/password" element={<ChangePassword/>} />

@@ -1,9 +1,9 @@
 //Importation
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react"; // nous permet de déclarer des variables d'état avec leurs fonctions qui puissent les modifier
 import { Formik, Form, Field, ErrorMessage } from "formik"; // Pour les formulaires
-import * as Yup from "yup";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import * as Yup from "yup"; //Impose un schema pour les formulaires
+import axios from "axios"; //Nous permet d'exploiter nos routes backend
+import { useNavigate } from "react-router-dom"; //Nous permet de nous rediriger vers d'autres pages selon l'URL indiqué après une tache effectué
 
 function CreatePost() {
   let navigate = useNavigate();
@@ -14,12 +14,11 @@ function CreatePost() {
     postText: "",
   };
 
-  //Vérifif token, si false => renvois à la page login
+  /*Si l'utilisateur n'est pas authentifié => renvois à la page de login */
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
       navigate("/login");
-    }
-  }, [navigate]);
+    }}, [navigate]);
 
   // Schema de validation Yup pour formik
   const validationSchema = Yup.object().shape({
@@ -43,7 +42,7 @@ function CreatePost() {
         "content-type": "multipart/form-data", // multipart/form-data essentiel pour gérer les images
       })
       .then((response) => {
-        navigate("/posts"); // Si c'est OK redirige vers la page d'accueil
+        navigate("/"); // Si c'est OK redirige vers la page d'accueil
       })
       .catch((err) => {
         console.log("err", err);

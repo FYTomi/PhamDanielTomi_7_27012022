@@ -8,11 +8,11 @@ function ChangePassword() {
   const [newPassword, setNewPassword] = useState("");
   let navigate = useNavigate()
 
+/*Si l'utilisateur n'est pas authentifié => renvois à la page de login */
   useEffect(() => {
 		if (!localStorage.getItem('accessToken')) {
 			navigate('/login')
-		}
-  }, [navigate])
+		}}, [navigate])
 
   const changePassword = () => {
     axios
@@ -38,6 +38,7 @@ function ChangePassword() {
       });
   };
 
+  /* Render du formulaire à remplaire pour le mot de passe */
   return (
     <div className="register-form">
       <h1>Modifier votre mot de passe</h1>

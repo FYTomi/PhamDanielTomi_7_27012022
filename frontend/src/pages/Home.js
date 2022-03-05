@@ -46,10 +46,10 @@ function Home() {
               {value.imageUrl != null && (
                   <img src={value.imageUrl} className="imagePost" alt="" />
               )}
-               <div>{value.postText}</div> {/* Corps du texte  */}
+               <div>{value.postText}</div> {/* Description du post  */}
             </div>
             <div className="footer">
-              {/* Username */}
+              {/* Indique qui a posté le post */}
               <div className="container-content">
                 <Link to={`/profile/${value.UserId}`}>Post ajouté par {value.username} </Link>
               </div>

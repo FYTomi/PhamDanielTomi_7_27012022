@@ -32,7 +32,7 @@ function Login() {
           status: true,
           adminStatus: response.data.adminStatus,
         });
-        navigate("/posts"); //Redirige vers la pages des posts après connexion
+        navigate("/"); //Redirige vers la pages des posts après connexion
       }
     });
   };

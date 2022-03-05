@@ -51,7 +51,7 @@ function Profile() {
           });
           navigate("/login");
         } else {
-          navigate("/posts");
+          navigate("/");
         }
       });
   };
@@ -103,7 +103,7 @@ function Profile() {
       )}
 
       <div className="posts">
-        {/* Affiche tout les posts */}
+        {/* Affiche tout les posts de l'utilisateur */}
         {postsOfUser?.map((value, key) => {
           return (
             <article key={key} className="post">
@@ -117,13 +117,12 @@ function Profile() {
                 {value.imageUrl != null && (
                   <img src={value.imageUrl} className="imagePost" alt="" />
                 )}
-                <div>{value.postText}</div> {/* Corps du texte  */}
+                <div>{value.postText}</div> {/* Description du post  */}
               </div>
-              <div className="footer">
+                {/* Indique qui a posté le post*/}
                 <div className="container-content">
                   Posté par {value.username}
                 </div>
-              </div>
             </article>
           );
         })}
