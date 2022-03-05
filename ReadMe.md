@@ -42,7 +42,7 @@ mysql -u username -p groupomania < .sql
 
 - username (par défault "root") est le nom d'utilisateur avec lequel vous pouvez vous connecter à la base de données
 
-- Le mot de passe nécessaire est le suivant "ApQOlala49s3@", à remplacer en cas d'utilsation officelle en tant que variable d'environnement stocké dans
+- Le mot de passe nécessaire est le suivant "ApQOlala49s3@", à remplacer en cas d'utilsation officelle en tant que variable d'environnement stocké dans .env (qui devra être ignoré dans ".gitignore")
 
 Ceci va créer une base de données nommée "groupomania" à partir du fichier importé
 
