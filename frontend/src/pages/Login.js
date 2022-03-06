@@ -39,7 +39,7 @@ function Login() {
 
   return (
     <div className="register-form">
-      <h1>Se connecter</h1>
+      <h4>Se connecter</h4>
       <Formik initialValues={initialValues} onSubmit={login}>
         <Form className="formContainer">
           <ErrorMessage name="username" component="span" />
