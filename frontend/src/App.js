@@ -65,24 +65,31 @@ return (
   <div className="App">
     <AuthContext.Provider value={{authState, setAuthState}}>
       <BrowserRouter>
-      <div id="center-element">
-      <Link to="/"><img src={banner} alt={"banner"} classname="banner"/></Link>
-        <h1 id='titre'>Groupomania - un réseau social d'entreprise</h1>
+  {/*Header*/}  
+  <header class="blog-header py-3">
+    <div class="row flex-nowrap justify-content-between align-items-center">
+      <div class="col-4 text-center">
+        <Link to="/"><img className="blog-header-logo text-dark" src={banner} alt={"banner"} classname="banner"/></Link>
       </div>
-        <div className="navbar">
-          <div className="navlinks">
+    </div>
+  </header>
+      <div id="center-element">
+        <h1 className="display-4" id="titre">Un réseau social d'entreprise</h1>
+      </div>
+        <nav className="navbar">
+          <div className="nav d-flex justify-content-between">
            {/* Si authState false (non connecté) afficher sur la navbar : banner (qui nous redirige pas sur posts), "Se connecter" et "Inscription" */}
 							{!authState.status ? (
 								<>
-									<Link to="/login"> <h2>Se connecter</h2></Link>
-									<Link to="/signup"> <h2>Inscription</h2></Link>
+									<Link to="/login"> <h3 className="p-2 link-secondary">Se connecter</h3></Link>
+									<Link to="/signup"> <h3 className="p-2 link-secondary">Inscription</h3></Link>
 								</>
 							) :
 							// Sinon affiche la navbar avec le banner, "Accueil" et "Poster"
 							(
 								<>
-									<Link to="/"><h1>Accueil</h1></Link>
-	                <Link to="/createpost"><h2>Poster</h2></Link>
+									<Link to="/"><h2 className="p-2 link-secondary">Accueil</h2></Link>
+	                <Link to="/createpost"><h3 className="p-2 link-secondary">Poster</h3></Link>
 								</>
 							)}
           </div>
@@ -92,7 +99,7 @@ return (
 
             {/* Affiche le nom d'utilisateur, clickable qui nous redirige vers sa page */}
 							<Link to={`/profile/${authState.id}`} >
-								<h1>{authState.username}</h1>
+								<h3>{authState.username}</h3>
 							</Link>
 							
 							{/* Si authState true (logged in), afficher le bouton logout */}
@@ -100,7 +107,7 @@ return (
 								<button className="btn btn-primary" onClick={logout}>Se déconnecter</button>
 							)}
           </div>
-        </div>
+        </nav>
 
         <Routes>
 						<Route path="/signup" element={<Signup/>} />

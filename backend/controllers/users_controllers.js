@@ -75,14 +75,15 @@ exports.accountInfo = async(req, res) => {
   const userInfo = await Users.findByPk(id, {
     attribute: { exclude: ['password']},
   })
-  res.json(this.accountInfo)
+  res.json(userInfo)
 };
 
 //Modification d'un mot de passe
 
 exports.changePassword = async(req, res) => {
-  const { oldPassword, newPassword, username} = req.body
-  const user = await Users.findOne({ where : { username: username}})
+  const {oldPassword, newPassword} = req.body
+  console.log(req.body)
+  const user = await Users.findOne({ where : { username: req.user.username}})
 
   bcrypt.compare(oldPassword, user.password).then((match) =>{
     if (!match) {
@@ -93,7 +94,7 @@ exports.changePassword = async(req, res) => {
         .then ((hash) =>{
           Users.update(
             {password: hash},
-            {where: {username: username} })
+            {where: {username: req.user.username} })
 
           res.status(200).json('Le mot de passe a bien été changé')
         });

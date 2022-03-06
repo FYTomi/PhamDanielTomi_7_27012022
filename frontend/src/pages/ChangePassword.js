@@ -33,7 +33,7 @@ function ChangePassword() {
           alert(response.data.error);
         } else {
           alert("Votre mot de passe a bien été changé");
-          navigate('/posts')
+          navigate('/')
         }
       });
   };

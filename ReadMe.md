@@ -32,11 +32,11 @@ git clone https://github.com/FYTomi/PhamDanielTomi_7_27012022.git
 
 - Connectez-vous à mysql.
 
-- Importez le fichier " .sql "
+- Importez le fichier " groupomania.sql "
 
 
 ```bash
-mysql -u username -p groupomania < .sql
+mysql -u username -p groupomania < groupomania.sql
 ```
 - Remplacer si nécessaire dans le fichier config/config.json le nom d'utilisateur et mot de passe pour accéder à la base de données MySQL
 

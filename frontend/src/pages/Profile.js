@@ -61,7 +61,8 @@ function Profile() {
       {/* Affiche "Changer votre mot de passe" et "Supprimer votre compte" si c'est l'utilisateur du profil qui est connecté */}
       {authState.username === username && (
         <>
-          <button
+          <div className="accountOptions">
+          <button className="btn btn-primary"
             onClick={() => {
               navigate("/password");
             }}
@@ -69,13 +70,14 @@ function Profile() {
             Changer votre mot de passe
           </button>
 
-          <button
+          <button className="btn btn-primary"
             onClick={() => {
               deleteAccount(id);
             }}
           >
             Supprimer votre compte
           </button>
+          </div>
         </>
       )}
 
@@ -83,7 +85,7 @@ function Profile() {
       {authState.adminStatus === true && (
         <>
           <div className="accountOptions">
-            <button
+            <button className="btn btn-primary"
               onClick={() => {
                 navigate("/password");
               }}
@@ -91,7 +93,7 @@ function Profile() {
               Changer le mot de passe
             </button>
 
-            <button
+            <button className="btn btn-primary"
               onClick={() => {
                 deleteAccount(id);
               }}
@@ -121,7 +123,7 @@ function Profile() {
               </div>
                 {/* Indique qui a posté le post*/}
                 <div className="container-content">
-                  Posté par {value.username}
+                  Auteur: {value.username}
                 </div>
             </article>
           );

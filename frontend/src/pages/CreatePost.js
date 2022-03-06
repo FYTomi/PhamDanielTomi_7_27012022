@@ -23,7 +23,7 @@ function CreatePost() {
   // Schema de validation Yup pour formik
   const validationSchema = Yup.object().shape({
     title: Yup.string().required("Titre requis"),
-    postText: Yup.string().required("Message requis"),
+    postText: Yup.string().required("Texte requis"),
   });
 
   const [file, setFile] = useState(null); // State du nom du fichier
@@ -74,7 +74,7 @@ function CreatePost() {
             autoComplete="off"
             className="form-control"
             name="postText"
-            placeholder="Message"
+            placeholder="Texte"
           />
           {/* input parcourir qui permet d'envoyer la photo au backend */}
           <h2>Ajouter une image</h2>

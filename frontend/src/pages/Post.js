@@ -176,7 +176,7 @@ function Post() {
           {/* Affiche qui a posté le post */}
           <div className="container-content">
             <div className="username">
-              Post ajouté par {postObject.username}
+              Auteur: {postObject.username}
             </div>
 
             {/* Affiche pour l'utilisateur ou un admin une icône de poubelle pour supprimer le post*/ }
@@ -195,22 +195,7 @@ function Post() {
       </div>
 
       <div>
-        {/* Ajout d'un commentaire */}
-        <div className="addCommentContainer">
-          <div className="title">Ajouter un commentaire</div>
-          <input
-            type="text"
-            placeholder="Votre commentaire..."
-            autoComplete="off"
-            // Valeur de l'input par défaut
-            value={newComment}
-            // Récupère le commentaire du form et le modifie dans le state
-            onChange={(event) => {
-              setNewComment(event.target.value);
-            }}
-          />
-          <button onClick={addComment}> Commenter</button>
-        </div>
+        
         {/* Liste des commentaires */}
         <div className="listOfComments">
           {/* Utilise map pour boucler et afficher tout les commentaires */}
@@ -236,6 +221,23 @@ function Post() {
               </div>
             );
           })}
+        </div>
+
+        {/* Ajout d'un commentaire */}
+        <div className="addCommentContainer">
+          <label className="title">Ajouter un commentaire</label>
+          <textarea
+            type="text"
+            placeholder="Votre commentaire..."
+            autoComplete="off"
+            // Valeur de l'input par défaut
+            value={newComment}
+            // Récupère le commentaire du form et le modifie dans le state
+            onChange={(event) => {
+              setNewComment(event.target.value);
+            }}
+          />
+          <button className="btn btn-primary" onClick={addComment}> Commenter</button>
         </div>
       </div>
     </div>

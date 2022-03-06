@@ -51,7 +51,7 @@ function Home() {
             <div className="footer">
               {/* Indique qui a posté le post */}
               <div className="container-content">
-                <Link to={`/profile/${value.UserId}`}>Post ajouté par {value.username} </Link>
+                <Link to={`/profile/${value.UserId}`}>Auteur: {value.username} </Link>
               </div>
             </div>
           </article>

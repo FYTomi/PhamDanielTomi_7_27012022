@@ -20,7 +20,7 @@ router.post ("/signup", userCtrl.signup);
 router.post ("/login", userCtrl.login);
 router.get ("/accountInfo/:id",validateToken, userCtrl.accountInfo);
 router.get("/verify", validateToken, userCtrl.authentify);
-router.put ("/password",userCtrl.changePassword);
+router.put ("/password",validateToken, userCtrl.changePassword);
 router.delete ("/deleteAccount/:id",validateToken, userCtrl.deleteAccount);
 
 module.exports = router;
