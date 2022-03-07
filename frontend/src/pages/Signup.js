@@ -12,6 +12,7 @@ function Signup() {
     email: '',
   };
 
+  //schema de validation pour notre formulaire avec Yup
   const validationSchema = Yup.object().shape({
     username: Yup.string()
       .min(4, "Username must be at least 6 characters")
@@ -39,7 +40,7 @@ function Signup() {
   };
   return (
     <div className="register-form">
-      <h1>S'inscrire</h1>
+      <h4>S'inscrire</h4>
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
