@@ -24,7 +24,12 @@ function Profile() {
 
       // Récupère les posts qui appartient au profil et le rajoute au state
       axios
-        .get(`http://localhost:5000/posts/userPosts/${id}`)
+        .get(`http://localhost:5000/posts/userPosts/${id}`,
+        {
+          headers: {
+            accessToken: localStorage.getItem("accessToken"),
+          },
+        })
         .then((response) => {
           setpostsOfUser(response.data);
         });

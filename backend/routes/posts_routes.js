@@ -18,8 +18,8 @@ const postsCtrl = require("../controllers/posts_controllers");
 //DELETE - Supprime un post
 
 router.get ("/",validateToken, postsCtrl.displayPosts);
-router.get ("/post/:id", postsCtrl.displayPost);
-router.get ("/userPosts/:id", postsCtrl.displayUserPosts);
+router.get ("/post/:id",validateToken, postsCtrl.displayPost);
+router.get ("/userPosts/:id",validateToken, postsCtrl.displayUserPosts);
 router.post ("/",validateToken,multer.uploadImage, postsCtrl.createPost);
 router.put ("/title",validateToken, postsCtrl.changePostTitle);
 router.put ("/postText",validateToken, postsCtrl.changePostText);
