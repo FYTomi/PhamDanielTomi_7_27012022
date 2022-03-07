@@ -2,7 +2,7 @@ CREATE DATABASE  IF NOT EXISTS `groupomania` /*!40100 DEFAULT CHARACTER SET utf8
 USE `groupomania`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: groupomania
+-- Host: localhost    Database: groupomania
 -- ------------------------------------------------------
 -- Server version	8.0.28
 
@@ -68,7 +68,7 @@ CREATE TABLE `posts` (
   PRIMARY KEY (`id`),
   KEY `UserId` (`UserId`),
   CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -77,6 +77,7 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
+INSERT INTO `posts` VALUES (4,'Mon chat','Mon chat','Eddie','http://localhost:5000/images/image-1646668556916.jpeg','2022-03-07 15:55:56','2022-03-07 15:55:56',2),(5,'Mes vacances au Japon','C\'est beau','Tomi','http://localhost:5000/images/image-1646668610264.jpeg','2022-03-07 15:56:50','2022-03-07 15:56:50',4),(6,'Post à supprimer','test','Admin','http://localhost:5000/images/image-1646668674566.jpeg','2022-03-07 15:57:54','2022-03-07 15:57:54',5);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +98,7 @@ CREATE TABLE `users` (
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +107,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (2,'Eddie','$2b$10$l/.d4u49d6sKLeXJXKv6Iejrvm2YcBx6EI6UX8RTU0Gruw8sTf2SK','eddie@test.copm',0,'2022-03-07 14:37:07','2022-03-07 14:37:07');
+INSERT INTO `users` VALUES (2,'Eddie','$2b$10$l/.d4u49d6sKLeXJXKv6Iejrvm2YcBx6EI6UX8RTU0Gruw8sTf2SK','eddie@test.copm',0,'2022-03-07 14:37:07','2022-03-07 14:37:07'),(4,'Tomi','$2b$10$rzeHCiZ.2Xd.7T63fVmCaes6bIY9yZPa9nXR4VXNrjC9CXhSxqjp2','tomi.test@test.fr',0,'2022-03-07 15:56:19','2022-03-07 15:56:19'),(5,'Admin','$2b$10$92Lryc686sFmN59Nzh4ScOYRkw8TMJMLQLR2oAN7orgvEzBkcQiUe','admin.test@yahoo.fr',1,'2022-03-07 15:57:08','2022-03-07 15:57:08');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -119,4 +120,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-07 16:03:36
+-- Dump completed on 2022-03-07 16:59:27
