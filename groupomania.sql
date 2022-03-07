@@ -1,6 +1,8 @@
+CREATE DATABASE  IF NOT EXISTS `groupomania` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `groupomania`;
 -- MySQL dump 10.13  Distrib 8.0.28, for Win64 (x86_64)
 --
--- Host: localhost    Database: groupomania
+-- Host: 127.0.0.1    Database: groupomania
 -- ------------------------------------------------------
 -- Server version	8.0.28
 
@@ -35,7 +37,7 @@ CREATE TABLE `comments` (
   KEY `UserId` (`UserId`),
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`PostId`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`UserId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +46,6 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
-INSERT INTO `comments` VALUES (35,'C\'est beau !','Marc','2022-03-05 14:56:59','2022-03-05 14:56:59',24,NULL),(36,'Merci !','Eddie','2022-03-05 14:59:28','2022-03-05 14:59:28',24,NULL),(37,'Test','Eddie','2022-03-06 12:43:03','2022-03-06 12:43:03',24,NULL),(38,'Yo','Admin','2022-03-06 13:36:31','2022-03-06 13:36:31',26,NULL);
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -67,7 +68,7 @@ CREATE TABLE `posts` (
   PRIMARY KEY (`id`),
   KEY `UserId` (`UserId`),
   CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`UserId`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +77,6 @@ CREATE TABLE `posts` (
 
 LOCK TABLES `posts` WRITE;
 /*!40000 ALTER TABLE `posts` DISABLE KEYS */;
-INSERT INTO `posts` VALUES (24,'Mes vacances au Japon','C\'était génial','Eddie','http://localhost:5000/images/image-1646492157150.jpeg','2022-03-05 14:55:57','2022-03-05 14:55:57',7),(25,'Ma sauce favorite','Très piquant ','Marc','http://localhost:5000/images/image-1646492252832.jpeg','2022-03-05 14:57:32','2022-03-05 14:57:32',10),(26,'Mon chat','Assis sur son trône ','Marc','http://localhost:5000/images/image-1646492327973.jpeg','2022-03-05 14:58:47','2022-03-05 14:58:47',10),(27,'Post test','Test','Eddie','http://localhost:5000/images/image-1646571765390.jpeg','2022-03-06 13:02:45','2022-03-06 13:02:45',7);
 /*!40000 ALTER TABLE `posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +97,7 @@ CREATE TABLE `users` (
   `updatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,13 +106,8 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (7,'Eddie','$2b$10$yn5GOiTTcvYRu8pbgYfwAutCrX1rsxPzvEq2U0A97sMNssg34/ID.','eddie.usertest@yahoo.fr',0,'2022-03-04 11:53:41','2022-03-04 11:53:41'),(9,'Admin','$2b$10$vJiCrYeKn52uuPsDCHmOdOT8RzNitoMESD2leJeShZurZYF0Yf.Wm','admin@test.fr',1,'2022-03-04 12:12:01','2022-03-06 13:09:20'),(10,'Marc','$2b$10$p/iRrwK6hID3dd5WGWfBUe3EXIJr8CNABaB40rUzgUV0XwFJCdP96','marc.test@test.fr',0,'2022-03-05 14:56:35','2022-03-05 14:56:35');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
-
---
--- Dumping routines for database 'groupomania'
---
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -123,4 +118,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-03-06 16:03:19
+-- Dump completed on 2022-03-07 15:33:58
