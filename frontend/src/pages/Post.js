@@ -20,12 +20,17 @@ function Post() {
       navigate("/login");
     } else {
       // Récupère un post grâce à son id
-      axios.get(`http://localhost:5000/posts/post/${id}`).then((response) => {
+      axios.get(`http://localhost:5000/posts/post/${id}`,).then((response) => {
         setPostObject(response.data);
       });
 
       // Récupère les commentaires d'un post
-      axios.get(`http://localhost:5000/comments/${id}`).then((response) => {
+      axios.get(`http://localhost:5000/comments/${id}`,
+      {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        },
+      }).then((response) => {
         setComments(response.data);
       });
     }
